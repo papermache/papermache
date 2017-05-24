@@ -1,0 +1,93 @@
+= form_for @account do |f|
+  #error_explanation
+    %ul
+      - @account.errors.full_messages.each do |message|
+        %li{style: 'color: red'}= message  
+  
+  .col-md-4
+
+    .page-header 
+      %h4 General Info
+
+    .form-group
+      = f.label 'First Name *'
+      = f.text_field :first_name, class: 'form-control'
+    .form-group
+      = f.label 'Last Name *'
+      = f.text_field :last_name, class: 'form-control'
+
+    - if !@account.student.has_edu_email?
+      .form-group
+        = f.label 'Enter .edu email *'
+        = f.text_field :edu_email, class: 'form-control'
+
+    .form-group
+      = f.label 'Photo'
+      = f.file_field :avatar
+      
+    -# .form-group
+    -#   = f.label 'Twitter'
+    -#   = f.text_field :twitter_link, class: 'form-control'
+
+    -# .form-group
+    -#   = f.label 'Facebook'
+    -#   = f.text_field :facebook_link, class: 'form-control' 
+
+    .form-group
+      = f.label 'About Me'
+      = f.text_area :about_me, class: 'form-control'
+
+    .page-header 
+      %h4 Research Interests
+
+    = f.fields_for :research_interests do |builder|  
+      = render 'research_interest_fields', f: builder
+    .form-group
+      = link_to_add_fields 'Add New Interest', f, :research_interests 
+
+  .col-md-4
+
+    .page-header 
+      %h4 Education Info
+
+    .form-group 
+      = f.label :school
+      -# = f.select :school, ['School1', 'School2', 'School3']
+      = f.autocomplete_field :school, autocomplete_account_school_accounts_path, 'data-auto-focus' => true, class: 'form-control'
+
+    .form-group
+      = f.label 'Major'
+      = f.select :major_ids, Major.all.collect { |m| [m.name, m.id] }, {}, multiple: true, class: 'form-control'
+      -# = f.text_field :major_ids, id: 'major_id'
+      -# = f.autocomplete_field :major_ids, autocomplete_major_name_accounts_path, id_element: "#major_id", multiple: true
+
+    .form-group
+      = f.label 'Minor'
+      = f.select :minor_ids, Minor.all.collect { |m| [m.name, m.id] }, {}, multiple: true, class: 'form-control'
+
+    -# .form-group
+    -#   = f.label 'GPA'
+    -#   = f.select :gpa, ['3.0', '3.5', '4.0', '4.5', '5.0']
+
+    .form-group    
+      = f.label 'Year'
+      -# = f.select :graduation_year, @graduation_year.collect {|p| [ ] }, {prompt: 'Select Person'}
+      -# = f.select :graduation_year, (1900..2100).to_a, :selected => Time.:prompt => {:year => "Select year"} 
+      = f.select(:graduation_year, 1900..2100, {selected: Time.now.year }, class: 'form-control')
+    .form-group
+      = f.label 'Date'
+      = f.date_select :graduation_date, class: 'form-control'
+
+  .col-md-4
+
+    .page-header 
+      %h4 Papers
+
+    = f.fields_for :papers do |builder|  
+      = render 'paper_fields', f: builder
+    .form-group
+      = link_to_add_fields 'Add Paper', f, :papers
+
+  .col-md-12   
+    .form-group
+      = f.submit 'Create New Account', class: 'btn btn-primary'

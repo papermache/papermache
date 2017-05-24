@@ -1,0 +1,26 @@
+%nav.navbar.navbar-default.sign_up_navbar
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-2", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+    #bs-example-navbar-collapse-2.collapse.navbar-collapse
+      .col-md-3.col-sm-3
+        = link_to do
+          = image_tag 'logo.jpg'
+      .col-md-8.col-sm-8
+        %form.navbar-form.navbar-right
+          .form-group
+            .row
+              %input.form-control{:placeholder => "Email", :type => "text"}
+              %i.fa.fa-user
+              %input.form-control{:placeholder => "Password", :type => "text"}
+              %i.fa.fa-key
+              %button.btn.btn-default{:type => "submit"} Log In
+            .row
+              %input{type: 'checkbox'}
+                Keep me logged in
+              = link_to do
+                Forgot your password?

@@ -1,0 +1,63 @@
+.log_in-jumb {
+  background: #f4f4f4;
+  padding-top: 2%;
+  min-height: 70%;
+  margin: 0;
+  .container {
+    .col-md-7 {
+      background: white;
+      float: none;
+      margin: 0 auto;
+      padding: 10px 20px;
+      form {
+        margin-top: 20px;
+        input {
+          margin-bottom: 20px;
+          width: 100%;
+          font-size: 16px;
+          padding: 5px;
+          border-radius: 0px;
+        }
+        input[type=checkbox]{
+          margin-bottom: 20px;
+          width: 15px;
+          font-size: 16px;
+          padding: 5px;
+        }
+        input[type=submit]{
+          margin-bottom: 15px;
+          width: 100%;
+          font-size: 16px;
+          padding: 10px;
+          background: #f7e100;
+          &:hover {
+            background: #ffec00;
+          }
+          border-radius: 0px;
+          font-family: 'Eurofurence';
+          text-transform: uppercase;
+          color: black;
+        }        
+      }
+      .container {
+        padding: 0;
+        a {
+          width: 100%;
+          padding: 10px;
+          text-align: center;
+          font-size: 16px;
+          font-family: 'Eurofurence';
+          background: #f7e100;
+          display: block;
+          text-decoration: none;
+          text-transform: uppercase;
+          color: black;
+          margin-bottom: 15px;
+          &:hover {
+            background: #ffec00;
+          }
+        }
+      }
+    }
+  }
+}

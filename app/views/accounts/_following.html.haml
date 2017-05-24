@@ -1,0 +1,6 @@
+%div{ id: "account_#{account.id}" } 
+  - if account.followed_by?(current_student.account) and account != current_student.account
+    = link_to 'unfollow', unfollow_account_path(account), method: :post, remote: true, class: 'btn btn-xs btn-danger zakroi-ebalo'
+
+  - elsif !account.followed_by?(current_student.account) and account != current_student.account
+    = link_to 'follow', follow_account_path(account), method: :post, remote: true, class: 'btn btn-xs btn-success'

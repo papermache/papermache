@@ -1,0 +1,23 @@
+- if @papers.length == 0 and params[:query].nil?
+  %h3 Search papers
+- elsif @papers.length == 0
+  %h3 Nothing was found
+-else
+  %h3 
+    Search results for 
+    %em= params[:query]
+
+  %p
+    = sortable 'cached_votes_score', 'Most Voted'
+    = sortable 'cached_votes_score', 'Lease Voted'
+
+  - @papers.each do |paper|
+    %b= link_to paper.title, paper.account
+    .text-muted= "by #{paper.account.full_name}"
+    %p
+      %b Themes:
+      = paper.themes
+    %br
+
+
+  = will_paginate @papers

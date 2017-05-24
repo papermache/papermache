@@ -1,0 +1,39 @@
+%nav.navbar.navbar-default
+  .container
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to 'Papermache', root_url, class: 'navbar-brand'
+    / Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-left
+        - if current_student and current_student.account
+          'Find Students', accounts_path
+          %li= link_to 'Find Papers', papers_path
+      
+      %ul.nav.navbar-nav.navbar-right
+
+        - if current_student and !current_student.account.completed?
+
+          %li
+            %a
+              Welcome #{current_student.email}
+          %li= link_to 'Log out', destroy_student_session_path, method: :delete
+
+        - elsif current_student and current_student.account.completed?
+        
+          %li
+            %a
+              Welcome #{current_student.account.full_name}
+              
+          %li= link_to 'Profile', account_path(current_student.account)
+          %li= link_to 'Log out', destroy_student_session_path, method: :delete
+
+        - else
+
+          %li= link_to 'Log in', new_student_session_path
+          %li= link_to 'Sign up', new_student_registration_path

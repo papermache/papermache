@@ -1,0 +1,112 @@
+.nav-all {
+  background: white;
+  border: none;
+  margin: 0;
+  .container {
+    padding: 10px 0;
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse {
+      padding: 0;
+      .col-md-3 {
+        img {
+          width: 80%;
+          height: 100%;
+        }
+      }
+      .col-md-8:last-child {
+        padding-top: 22px;
+      }
+      .nav.navbar-nav {
+        li {
+          a {
+            color: black;
+            padding: 10px 20px;
+            margin-right: 5px;
+            font-style: italic;
+            font-family: 'Eurofurence';
+            font-size: 17px;
+          }
+        }
+      }
+      .nav-center {
+        li {
+          a {
+            background: #f7e100;
+            &:hover {
+              background: black;
+              color: #f7e100;
+            }
+          }
+        }
+      }
+      //.row2 {
+      //  li {
+      //    a {
+      //      background: #282728;
+      //      color: #f7e100!important;
+      //    }
+      //  }
+      //}
+      .navbar-right {
+        li {
+          width: 130px;
+          text-align: center;
+          &:first-child {
+            margin-right: 5px;
+          }
+          a {
+            width: 100%;
+            background: #d0d0d0;
+            &:hover {
+              background: #e9e9e9;
+            }
+          }
+        }
+        .welcome-profile {
+          padding-top : 10px;
+          width: 200px;
+          a{
+            background:white;
+            &:hover {
+              background: white;
+              color : blue;
+            }
+          }
+          .profile-a{
+            font-style: normal;
+            font-family: 'Eurofurence';
+            font-size: 17px;
+          }
+        }
+        .welcome-email {
+          padding-top : 0px;
+          width: 200px;
+        }
+        .firstbtn {
+          margin-right: 5px;
+        }
+        form {
+          .form-group {
+            position: relative;
+            margin: 0;
+            width: 185px;
+            i {
+              position: absolute;
+              bottom: 6px;
+              right: 5px;
+              font-size: 20px;
+            }
+            input {
+              background: #f3f3f3;
+              height: 30px;
+              border-radius: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.navbar .navbar-collapse {
+  text-align: left;
+}

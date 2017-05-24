@@ -1,0 +1,11 @@
+= form_tag papers_path, method: :get, id: 'papers_search' do
+  = hidden_field_tag :direction, params[:direction]
+  = hidden_field_tag :sort, params[:sort]
+  .form-group
+    .input-group 
+      = text_field_tag :query, params[:query], placeholder: 'Title, Author, Description, Tag', class: 'form-control', id: 'search_input'
+      .input-group-btn
+        = submit_tag 'Search', name: nil, class: 'btn btn-success'
+
+#papers
+  = render 'found_papers'

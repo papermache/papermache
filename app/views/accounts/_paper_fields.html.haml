@@ -1,0 +1,28 @@
+%fieldset
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+  .form-grop
+    = f.label :date_fo_creating
+    = f.date_select :date_of_creating
+  .form-group
+    = f.label :tag_list, "Tags (separated by commas)"
+    = f.text_field :tag_list, value: f.object.tag_list.to_s, class: 'form-control'
+  .form-group
+    = f.label :about, 'About Paper'
+    = f.text_area :about, class: 'form-control'
+  .form-group
+    = f.label :themes
+    = f.text_field :themes, value: f.object.themes.to_s, class: 'form-control'
+  .form-group
+    = f.label :file
+    = f.file_field :file
+  .form-group
+    = f.label :professor 
+    = f.text_field :professor, class: 'form-control' 
+  .form-group
+    = f.label :grade 
+    = f.select :grade, ['B-', 'B', 'B+', 'A', 'A+'] 
+  .form-group  
+    = f.hidden_field :_destroy
+    = link_to "remove", '#', class: "remove_fields btn btn-danger"

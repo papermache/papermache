@@ -1,0 +1,64 @@
+= render 'layouts/sign_up_navbar'
+.jumbotron.sign_up-jumb
+  .container
+    .col-md-4
+      %form{:role => "form"}
+        %label School:
+        %select.form-control
+          %option -None-
+          %option 1
+          %option 2
+          %option 3
+          %option 4
+          %option 5
+        %label Major:
+        %select.form-control{multiple: ''}
+          %option -None-
+          %option 1
+          %option 2
+          %option 3
+          %option 4
+          %option 5
+        %p
+          Select up to two
+        %label Minor:
+        %select.form-control{multiple: ''}
+          %option -None-
+          %option 1
+          %option 2
+          %option 3
+          %option 4
+          %option 5
+        %p
+          Select up to two
+        %label GPA:
+        %select.form-control
+          %option -None-
+          %option 1
+          %option 2
+          %option 3
+          %option 4
+          %option 5
+        %label Year:
+        %select.form-control
+          %option -None-
+          %option 1
+          %option 2
+          %option 3
+          %option 4
+          %option 5
+        %label Research Interests:
+        %input{type: 'text', class: 'width'}
+        %p
+          What piques your curiosity? What motivates your passions
+          Separate fields with commas.
+    .col-md-8
+      .iframe
+        %iframe{:allowfullscreen => "", :frameborder => "0", :height => "370px",
+                :mozallowfullscreen => "",
+                :src => "https://player.vimeo.com/video/59172838?color=ebd20c",
+                :webkitallowfullscreen => "", :width => "100%"}
+      = link_to do
+        %button
+          Create new account
+

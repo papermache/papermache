@@ -1,0 +1,10 @@
+.account_voting 
+  = link_to like_account_path(@account), method: :put, remote: true do
+    %i.fa.fa-thumbs-up.fa 
+
+  .account_rating
+    = render 'account_rating'
+
+  = link_to dislike_account_path(@account), method: :put, remote: true do
+    %i.fa.fa-thumbs-down.fa
+

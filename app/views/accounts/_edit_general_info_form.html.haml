@@ -1,0 +1,52 @@
+= form_for @account do |f|
+  #error_explanation
+    %ul
+      - @account.errors.full_messages.each do |message|
+        %li{style: 'color: red'}= message  
+
+    .page-header 
+      %h4 General Info
+
+    .col-md-6
+
+      .form-group
+        = f.label 'First Name *'
+        = f.text_field :first_name, class: 'form-control'
+      .form-group
+        = f.label 'Last Name *'
+        = f.text_field :last_name, class: 'form-control'
+
+      - if !@account.student.has_edu_email?
+        .form-group
+          = f.label 'Enter .edu email *'
+          = f.text_field :edu_email, class: 'form-control'
+
+      .form-group
+        = f.label :avatar
+        = f.file_field :avatar
+        
+      .form-group
+        = f.label 'Twitter'
+        = f.text_field :twitter_link, class: 'form-control'
+
+      .form-group
+        = f.label 'Facebook'
+        = f.text_field :facebook_link, class: 'form-control' 
+
+    .col-md-6
+
+      .form-group
+        = f.label 'About Me'
+        = f.text_area :about_me, class: 'form-control'
+
+      .page-header 
+        %h4 Research Interests
+
+      = f.fields_for :research_interests do |builder|  
+        = render 'research_interest_fields', f: builder
+      .form-group
+        = link_to_add_fields 'Add New Interest', f, :research_interests 
+
+    .col-md-12   
+      .form-group
+        = f.submit 'Update', class: 'btn btn-block btn-primary'

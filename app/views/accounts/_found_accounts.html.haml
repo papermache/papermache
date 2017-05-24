@@ -1,0 +1,34 @@
+- if @accounts.length == 0 and params[:query].nil?
+  %h3 Search students
+- elsif @accounts.length == 0
+  %h3 Nobody was found
+-else
+  %h3 
+    Search results for 
+    %em= params[:query]
+
+  -# %p
+  -#   = sortable 'first_name', 'First Name'
+  -#   = sortable 'cached_votes_up', 'Upvotes'
+  -#   = sortable 'cached_votes_down', 'Downvotes'
+  -#   = sortable 'cached_votes_score', 'Score'
+
+  - @accounts.each do |account|
+
+    %p
+      = link_to account do 
+        .avatar= image_tag account.avatar
+      = account.full_name
+      %p
+        - account.majors.each do |major|
+          = major.name
+
+      %p    
+        %i.fa.fa-thumbs-up
+        = account.get_upvotes.size - account.get_downvotes.size
+        %i.fa.fa-thumbs-down
+
+      %p
+        = render 'following', account: account
+
+  = will_paginate @accounts

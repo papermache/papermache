@@ -1,0 +1,36 @@
+= form_for @account do |f|
+  #error_explanation
+    %ul
+      - @account.errors.full_messages.each do |message|
+        %li{style: 'color: red'}= message  
+
+  .page-header 
+    %h4 Education Info
+
+  .form-group 
+    = f.label :school
+    = f.select :school, ['School1', 'School2', 'School3']
+
+  .form-group
+    = f.label 'Major'
+    = f.select :major_ids, Major.all.collect { |m| [m.name, m.id] }, {}, multiple: true
+
+  .form-group
+    = f.label 'Minor'
+    = f.select :minor_ids, Minor.all.collect { |m| [m.name, m.id] }, {}, multiple: true
+
+  .form-group
+    = f.label 'GPA'
+    = f.select :gpa, ['3.0', '3.5', '4.0', '4.5', '5.0']
+
+  .form-group    
+    = f.label 'Year'
+    = f.select :graduation_year, ['Junior Graduation', 'Bachelor Graduation', 'Master Graduation']
+
+  .form-group
+    = f.label 'Date'
+    = f.date_select :graduation_date
+
+  .col-md-12   
+    .form-group
+      = f.submit 'Update', class: 'btn btn-block btn-primary'

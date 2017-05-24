@@ -1,0 +1,127 @@
+.jumbotron.profile-jumb
+  .container
+    .row
+      .col-md-2.col-sm-3.col-xs-6
+        .image
+          = image_tag @account.avatar
+      .col-md-10.col-sm-9.col-xs-6
+        .about-person
+          %h3
+            = @account.first_name 
+            %br/
+            = @account.last_name
+          %button
+            Peer
+          %button{:onclick => "location.href=\"mailto:#{@account.edu_email}\""}
+            Message
+            %i.fa.fa-envelope.fa
+          -# .icons
+          -#   - if @account.facebook_link?  
+          -#     = link_to @account.facebook_link do 
+          -#       %i.fa.fa-facebook-official.fa-2x
+          -#   - if @account.twitter_link?
+          -#     = link_to @account.twitter_link do
+          -#       %i.fa.fa-twitter-square.fa-2x
+          -#   %i.fa.fa-rss
+          -#   %i.fa.fa-envelope
+
+
+    .row.row2
+      .col-md-2
+        %h5
+          Fall 2016
+        .scroll
+          .doc
+            = image_tag 'doc-icon.png'
+            %p
+              Bio 201
+          .doc
+            = image_tag 'doc-icon.png'
+            %p
+              Bio 201
+          .doc
+            = image_tag 'doc-icon.png'
+            %p
+              Bio 201
+          .doc
+            = image_tag 'doc-icon.png'
+            %p
+              Bio 201
+          .doc
+            = image_tag 'doc-icon.png'
+            %p
+              Bio 201
+          .doc
+            = image_tag 'doc-icon.png'
+            %p
+              Bio 201
+          .doc
+            = image_tag 'doc-icon.png'
+            %p
+              Bio 201
+          .doc
+            = image_tag 'doc-icon.png'
+            %p
+              Bio 201
+        %nav
+          %ul.pagination.pagination-sm
+            %li
+              %a{"aria-label" => "Previous", :href => "#"}
+                %span{"aria-hidden" => "true"} &laquo;
+            %li
+              %a{:href => "#"} 1
+            %li
+              %a{:href => "#"} 2
+            %li
+              %a{:href => "#"} 3
+            %li
+              %a{"aria-label" => "Next", :href => "#"}
+                %span{"aria-hidden" => "true"} &raquo;
+
+
+      .col-md-10
+        %div
+          %ul.nav.nav-tabs{:role => "tablist", id: "myTabs"}
+            %li.active{:role => "presentation"}
+              %a{"aria-controls" => "home", "data-toggle" => "tab", :href => "#profile", :role => "tab"}
+                Profile
+            %li{:role => "presentation"}
+              %a{"aria-controls" => "profile", "data-toggle" => "tab", :href => "#friends", :role => "tab"}
+                Peers
+            %li{:role => "presentation"}
+              %a{"aria-controls" => "edit_general_info", "data-toggle" => "tab", :href => "#edit_general_info", :role => "tab"}
+                Edit General Info
+            %li{:role => "presentation"}
+              %a{"aria-controls" => "edit_education_info", "data-toggle" => "tab", :href => "#edit_education_info", :role => "tab"}
+                Edit Education Info
+            %li{:role => "presentation"}
+              %a{"aria-controls" => "manage_papers", "data-toggle" => "tab", :href => "#manage_papers", :role => "tab"}
+                Manage Papers
+            %li{:role => "presentation"}
+              %a{"aria-controls" => "new_paper", "data-toggle" => "tab", :href => "#new_paper", :role => "tab"}
+                Add Paper
+
+        .tab-content
+          #profile.tab-pane.active{:role => "tabpanel"}
+            = render 'details'
+          #friends.tab-pane{:role => "tabpanel"}
+            = render 'friends'
+
+          - if current_student && current_student == @account.student
+            #edit_general_info.tab-pane{:role => "tabpanel"}
+              = render 'edit_general_info_form'
+            #edit_education_info.tab-pane{:role => "tabpanel"}
+              = render 'edit_education_form'
+            #manage_papers.tab-pane{:role => "tabpanel"}
+              = render 'edit_paper_form'
+            #new_paper.tab-pane{:role => "tabpanel"}
+              = render 'papermache/papers/form'
+
+
+
+
+:javascript
+  $('#myTabs a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })

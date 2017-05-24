@@ -1,0 +1,84 @@
+.col-md-12
+  %div
+    %ul.nav.nav-tabs{:role => "tablist", id: "myTabs"}
+      %li.active{:role => "presentation"}
+        %a{"aria-controls" => "home", "data-toggle" => "tab", :href => "#profile", :role => "tab"}
+          Profile
+      %li{:role => "presentation"}
+        %a{"aria-controls" => "profile", "data-toggle" => "tab", :href => "#friends", :role => "tab"}
+          Friends
+      %li{:role => "presentation"}
+        %a{"aria-controls" => "edit_general_info", "data-toggle" => "tab", :href => "#edit_general_info", :role => "tab"}
+          Edit General Info
+      %li{:role => "presentation"}
+        %a{"aria-controls" => "edit_education_info", "data-toggle" => "tab", :href => "#edit_education_info", :role => "tab"}
+          Edit Education Info
+      %li{:role => "presentation"}
+        %a{"aria-controls" => "manage_papers", "data-toggle" => "tab", :href => "#manage_papers", :role => "tab"}
+          Manage Papers
+      %li{:role => "presentation"}
+        %a{"aria-controls" => "new_paper", "data-toggle" => "tab", :href => "#new_paper", :role => "tab"}
+          Add Paper
+
+    .tab-content
+      #profile.tab-pane.active{:role => "tabpanel"}
+        = render 'details'
+      #friends.tab-pane{:role => "tabpanel"}
+        = render 'friends'
+
+      - if current_student && current_student == @account.student
+        #edit_general_info.tab-pane{:role => "tabpanel"}
+          = render 'edit_general_info_form'
+        #edit_education_info.tab-pane{:role => "tabpanel"}
+          = render 'edit_education_form'
+        #manage_papers.tab-pane{:role => "tabpanel"}
+          = render 'edit_paper_form'
+        #new_paper.tab-pane{:role => "tabpanel"}
+          = render 'papers/form'
+
+-# .col-md-4
+-#   = render 'details'
+ 
+-# .col-md-4
+-#   = render 'friends'
+
+-# .col-md-4
+-#   .page-header
+-#     %h4 Papers
+
+-#   - if @account.papers.length != 0
+-#     - @account.papers.each do |paper|
+-#       %p
+-#         %b Title:
+-#         = paper.title
+-#       %p
+-#         %b Date Created:
+-#         = paper.date_of_creating
+-#       %p 
+-#         %b Professor:
+-#         = paper.professor 
+-#       %p
+-#         %b Grade:
+-#         = paper.grade
+-#       %p
+-#         %b File:
+-#         = link_to paper.file.identifier, paper.file.url
+-#       %p 
+-#         %b About Paper:
+-#         = paper.about
+-#       %p 
+-#         %b Themes:
+-#         = paper.themes
+-#       %p
+-#         %b Tags:
+-#         -# = raw paper.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
+-#         = raw paper.tag_list.map { |t| t }.join(', ')
+
+-#       = render 'papers/paper_voting', paper: paper
+
+-#       %hr
+
+-# .col-md-12
+-#   - if current_student && current_student == @account.student
+-#     .form-group
+-#       = link_to 'Edit my account', edit_account_path(current_student.account), class: 'btn btn-default'

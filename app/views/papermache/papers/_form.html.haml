@@ -1,0 +1,23 @@
+= form_for Papermache::Paper.new, multipart: true do |f|
+  #error_explanation
+    %ul
+      - Papermache::Paper.new.errors.full_messages.each do |message|
+        %li{style: 'color: red'}= message  
+
+    .page-header 
+      %h4 New Paper
+
+    .hidden  
+      = f.label :account_id
+      = f.text_field :account_id, value: @account.id
+
+    .form-group
+      = f.label :title 
+      = f.text_field :title, class: 'form-control'
+
+    .form-group
+      = f.label :file 
+      = f.file_field :file 
+
+    .form-group
+      = f.submit 'Submit', class: 'btn btn-primary'

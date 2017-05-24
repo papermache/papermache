@@ -1,0 +1,58 @@
+.paper-overview
+  .row
+    .col-md-8
+      .row
+        %h1
+          = @paper.title
+      .row
+        .col-md-6
+          %h5 Date Created:          
+          %p= @paper.date_of_creating
+        .col-md-6
+          %h5 Course Title:
+        .col-md-6
+          %h5 Professor:
+          %p= @paper.professor
+      .row
+        .col-md-12
+          %h5 About Paper:
+          %p
+            -# = @papaer.about
+            %span Lorem ipsum sed ut perspiciatis unde em accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+      .row
+        .col-md-12
+          %h5
+            Themes:
+          %p
+            = @paper.themes
+        .col-md-12
+          %h5
+            Tags:
+          %p
+            = raw @paper.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
+    .col-md-4
+      .row
+        .col-md-8
+        .col-md-4.votes
+          .stats{ id: "paper_#{@paper.id}" } 
+            %table
+              %tr
+                %td
+                  Nay
+                %td.count
+                  = @paper.cached_votes_score
+                %td
+                  Yea
+              %tr
+                %td.yellow
+                  = link_to like_papermache_paper_path(@paper), method: :put, remote: true do
+                    %i.fa.fa-thumbs-down
+                %td
+                %td.grey
+                  = link_to dislike_papermache_paper_path(@paper), method: :put, remote: true do
+                    %i.fa.fa-thumbs-up
+      .row
+        .col-md-8.col-md-offset-2
+          .interact
+            .image
+              = link_to 'Click to Interact', '#pdf_view', {"data-toggle" => "tab", :role => "tab"}

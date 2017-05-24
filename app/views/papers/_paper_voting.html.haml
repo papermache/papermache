@@ -1,0 +1,9 @@
+.paper_voting 
+  = link_to like_papermache_paper_path(paper), method: :put, remote: true do
+    %i.fa.fa-thumbs-up.fa-2x 
+
+  %div{ id: "papermache_paper_rating_#{paper.id}" } 
+    = render 'papapermache/papers/paper_rating', paper: paper
+
+  = link_to dislike_papermache_paper_path(paper), method: :put, remote: true do
+    %i.fa.fa-thumbs-down.fa-2x

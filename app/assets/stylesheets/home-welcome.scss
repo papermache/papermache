@@ -1,0 +1,97 @@
+.welcome-jumb {
+  background: #f4f4f4;
+  margin: 0;
+  padding-top: 20px;
+  padding-bottom: 0;
+  .container {
+    .row {
+      padding: 15px 20px;
+      margin-bottom: 40px;
+      @media (max-width: 600px) {
+        .col-md-5 {
+          h1 {
+            line-height: 30px!important;
+            text-align: center;
+          }
+        }
+      }
+      .col-md-5 {
+        h1, p {
+          color: black;
+          margin: 0;
+          span {
+            color: #f7e100;
+          }
+        }
+        h1 {
+          line-height: 55px;
+        }
+        .description {
+          padding-top: 20px;
+          p {
+            color: #7d7d7d;
+            font-size: 18px;
+            line-height: 28px;
+            font-style: italic;
+            font-family: 'Eurofurence';
+          }
+        }
+      }
+      @media (max-width: 600px) {
+        .col-md-7 {
+          padding: 10px 0;
+        }
+
+      }
+      .col-md-7 {
+        .container {
+        }
+      }
+
+    }
+    hr {
+      border-top: 1px solid #888888;
+    }
+  }
+}
+
+
+
+.owl-theme .owl-controls .owl-buttons div {
+  position: absolute;
+}
+
+.owl-theme .owl-controls .owl-buttons .owl-prev{
+  left: -45px;
+  top: 35%;
+  background: none;
+  span {
+    font-size: 40px;
+    color: #888888;
+  }
+}
+
+.owl-theme .owl-controls .owl-buttons .owl-next{
+  right: -45px;
+  top: 35%;
+  background: none;
+  span {
+    font-size: 40px;
+    color: #888888;
+  }
+}
+
+.owl-pagination {
+  text-align: left!important;
+}
+
+.owl-page span {
+  background: black!important;
+  transform: scale(0.9)!important;
+}
+
+.owl-page.active span {
+  transform: scale(1.3)!important;
+  background: #f7e100!important;
+  transition: all 0.5s;
+}

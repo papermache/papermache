@@ -1,0 +1,49 @@
+.services {
+  background: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  .container {
+    .row {
+      padding: 10px 20px;
+      margin-bottom: 40px;
+      .col-md-4 {
+        a {
+          text-decoration: none;
+          color: black;
+          h3 {
+            width: 100%;
+            text-align: center;
+            padding-bottom: 10px;
+            font-style: italic;
+            font-family: 'Eurofurence';
+            span {
+              color: #f7e100;
+              font-size: 16px;
+              margin-top: 3px;
+            }
+          }
+          &:hover {
+            h3 {
+              transform: scale(1.1);
+            }
+          }
+        }
+        .image {
+          margin-top: 10px;
+          overflow: hidden;
+          img {
+            width: 100%;
+          }
+        }
+        p {
+          margin-top: -10px;
+          width: 100%;
+          text-align: center;
+          font-size: 14px;
+          line-height: 25px;
+          color: #777777;
+        }
+      }
+    }
+  }
+}

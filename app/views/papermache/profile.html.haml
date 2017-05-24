@@ -1,0 +1,98 @@
+.jumbotron.profile-jumb
+  .container
+    .row
+      .col-md-2.col-sm-3.col-xs-6
+        .image
+          = image_tag 'profile-1.jpeg'
+      .col-md-10.col-sm-9.col-xs-6
+        .about-person
+          %h3
+            Thomas Higgginbottom
+          %button
+            Connect
+          %button
+            Message
+            %i.fa.fa-envelope
+          .icons
+            %i.fa.fa-facebook.fa-2x
+            %i.fa.fa-twitter.fa-2x
+            %i.fa.fa-rss
+            %i.fa.fa-envelope
+
+
+    .row.row2
+      .col-md-2
+        %h5
+          Fall 2016
+        .scroll
+          .doc
+            = image_tag 'doc-icon.png'
+            %p
+              Bio 201
+          .doc
+            = image_tag 'doc-icon.png'
+            %p
+              Bio 201
+          .doc
+            = image_tag 'doc-icon.png'
+            %p
+              Bio 201
+          .doc
+            = image_tag 'doc-icon.png'
+            %p
+              Bio 201
+          .doc
+            = image_tag 'doc-icon.png'
+            %p
+              Bio 201
+          .doc
+            = image_tag 'doc-icon.png'
+            %p
+              Bio 201
+          .doc
+            = image_tag 'doc-icon.png'
+            %p
+              Bio 201
+          .doc
+            = image_tag 'doc-icon.png'
+            %p
+              Bio 201
+        %nav
+          %ul.pagination.pagination-sm
+            %li
+              %a{"aria-label" => "Previous", :href => "#"}
+                %span{"aria-hidden" => "true"} &laquo;
+            %li
+              %a{:href => "#"} 1
+            %li
+              %a{:href => "#"} 2
+            %li
+              %a{:href => "#"} 3
+            %li
+              %a{"aria-label" => "Next", :href => "#"}
+                %span{"aria-hidden" => "true"} &raquo;
+
+
+      .col-md-10
+        %div
+          %ul.nav.nav-tabs{:role => "tablist", id: "myTabs"}
+            %li.active{:role => "presentation"}
+              %a{"aria-controls" => "home", "data-toggle" => "tab", :href => "#profile", :role => "tab"}
+                Profile
+            %li{:role => "presentation"}
+              %a{"aria-controls" => "profile", "data-toggle" => "tab", :href => "#friends", :role => "tab"}
+                Friends
+          .tab-content
+            #profile.tab-pane.active{:role => "tabpanel"}
+              = render 'papermache/profile_overview'
+            #friends.tab-pane{:role => "tabpanel"}
+              = render 'papermache/profile_friends'
+
+
+
+
+:javascript
+  $('#myTabs a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })

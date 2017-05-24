@@ -1,0 +1,51 @@
+.jumbotron.welcome-jumb
+  .container
+    .row
+      .col-md-5.col-sm-12
+        %h1
+          Welcome
+        %h1
+          to the
+          %span
+            future
+        %h1
+          of
+          %span
+            research
+        .description
+          %p
+            At Papermache, we're taking academic
+          %p
+            publishing to new frontiers. Upload your research
+          %p
+            papers, find better citations, and collaborate with
+          %p
+            like-minded students,
+            %span
+              legally.
+      .col-md-7
+        .container
+          #owl-demo.owl-carousel
+            .container
+              %iframe{:allowfullscreen => "", :frameborder => "0", :height => "300px",
+              :mozallowfullscreen => "",
+              :src => "https://player.vimeo.com/video/59172838?color=ebd20c",
+              :webkitallowfullscreen => "", :width => "100%"}
+
+    %hr
+
+:javascript
+    $(document).ready(function () {
+      var carousel = $(".owl-carousel");
+    carousel.owlCarousel({
+      pagination : true,
+      items : 1,
+      responsive : true,
+      navigation: true,
+      slideSpeed : 1500,
+      navigationText: [
+        "<span class='glyphicon glyphicon-menu-left'></span>",
+        "<span class='glyphicon glyphicon-menu-right'></span>"
+        ],
+    });
+  });

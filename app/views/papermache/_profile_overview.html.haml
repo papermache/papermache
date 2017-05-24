@@ -1,0 +1,39 @@
+.profile-overview
+  .row
+    .col-md-3.col-xs-6.major
+      %p
+        School:  
+        = @account.school
+      %p
+        Major: 
+        - @account.majors.each do |major|
+          = major.name
+      %p
+        Year: 
+        = @account.graduation_year
+    .col-md-3.col-xs-6.major
+      %p
+        GPA: 
+        = @account.gpa
+      %p
+        Minor: 
+        - @account.minors.each do |minor|
+
+          = minor.name
+      %p
+        Date: 
+        = @account.graduation_date.strftime('%B %Y')
+  .row.research
+    .col-md-12
+      %h6
+        Research Interests:
+      - if @account.research_interests.length != 0
+        .col-md-3
+          %ul
+            - @account.research_interests.each do |interest|
+              %li= interest.title
+  .about
+    %h6
+      About Me:
+    %p
+      = @account.about_me

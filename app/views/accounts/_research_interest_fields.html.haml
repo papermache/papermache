@@ -1,0 +1,7 @@
+%fieldset
+  .form-group
+    .input-group
+      = f.text_field :title, class: 'form-control'
+      .input-group-btn
+        = f.hidden_field :_destroy
+        = link_to "remove", '#', class: "remove_fields btn btn-danger"

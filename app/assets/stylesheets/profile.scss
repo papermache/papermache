@@ -1,0 +1,147 @@
+.profile-jumb {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  margin: 0;
+  background: #f4f4f4;
+  .container {
+    .image {
+      overflow: hidden;
+      height: 168px;
+      img {
+        width: 100%;
+        transform: scaleY(1.02);
+      }
+    }
+    .about-person {
+      h3 {
+        width: 200px;
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+      button {
+        display: block;
+        padding: 5px 15px;
+        border: none;
+        background: #8d8d8d;
+        color: white;
+        margin-bottom: 5px;
+        font-size: 13px;
+        i {
+          margin-left: 5px;
+        }
+      }
+      .icons {
+        padding-bottom: 2px;
+        i {
+          font-size: 20px;
+          background: #8d8d8d;
+          width: 26px;
+          height: 30px;
+          padding: 5px 0 5px 3px;
+          color: white;
+          &:first-child {
+            padding-left: 6px;
+          }
+        }
+      }
+    }
+    .row2 {
+      padding-top: 20px;
+      .col-md-2 {
+        h5 {
+          width: 100%;
+          text-align: center;
+          font-size: 18px;
+        }
+        .scroll {
+          overflow: auto;
+          max-height: 540px;
+          .doc {
+            padding: 15px 20px 5px 20px;
+            text-align: center;
+            img {
+              width: 80%;
+            }
+            p {
+              padding-top: 5px;
+              width: 100%;
+              text-align: center;
+              font-size: 12px;
+              text-transform: uppercase;
+              font-weight: bold;
+              margin-bottom: 0;
+              color: #868f4c;
+            }
+          }
+        }
+        nav {
+          text-align: center;
+          ul.pagination.pagination-sm {
+            padding-top: 20px;
+            text-align: center;
+            margin-top: 0;
+            li {
+              a {
+                background: none;
+                border: none;
+                color: #919191;
+                padding: 0 5px 0 5px;
+                span {
+                  color: #f7e100;
+                }
+              }
+
+            }
+          }
+        }
+        @media (max-width: 600px) {
+          nav ul.pagination.pagination-sm {
+            li a {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+      .scroll::-webkit-scrollbar{
+        width: 10px;
+      }
+
+      .scroll::-webkit-scrollbar-track{
+        box-shadow:inset 4px 0 0 0 rgb(242, 242, 242), inset 6px 0 0 0 #cacaca;
+
+      }
+
+      .scroll::-webkit-scrollbar-thumb{
+        width: 15px;
+        background: #f7e100;
+        position: absolute;
+      }
+      .col-md-10 {
+        .nav-tabs {
+          li {
+            background: #535353;
+            margin: 5px 1px;
+            a {
+              background: none;
+              color: white;
+              border-radius: 0;
+              letter-spacing: 1px;
+              font-size: 13px;
+              border: none;
+            }
+          }
+          li.active {
+            background: #f7e100;
+            transform: scaleY(1.2);
+            a {
+              background: #f7e100;
+              color: #282728;
+              transform: scaleY(0.8);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

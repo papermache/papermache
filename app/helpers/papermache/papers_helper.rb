@@ -1,0 +1,2 @@
+module Papermache::PapersHelper
+end

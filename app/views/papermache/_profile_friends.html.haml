@@ -1,0 +1,31 @@
+.profile-friends
+  - @friends.each_slice(2) do |friend2slice|
+    .row
+      - friend2slice.each do |friend|
+        .col-md-5.col-sm-5.col-xs-12
+          .col-md-3.col-sm-2.col-xs-4
+            = link_to friend do
+              = image_tag friend.avatar
+          .col-md-9.col-sm-10.col-xs-8
+            %h5
+              = friend.full_name
+            %h6
+              - friend.majors.each do |major|
+                = major.name
+            .stats
+              %table
+                %tr
+                  %td
+                    Nay
+                  %td.count
+                    = friend.get_upvotes.size - friend.get_downvotes.size
+                  %td
+                    Yea
+                %tr
+                  %td.yellow
+                    = link_to do
+                      %i.fa.fa-thumbs-down
+                  %td
+                  %td.grey
+                    = link_to do
+                      %i.fa.fa-thumbs-up

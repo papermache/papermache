@@ -1,0 +1,18 @@
+= form_for @account do |f|
+  #error_explanation
+    %ul
+      - @account.errors.full_messages.each do |message|
+        %li{style: 'color: red'}= message  
+
+  .page-header 
+    %h4 Papers
+
+  = f.fields_for :papers do |builder|  
+    = render 'paper_fields', f: builder
+    
+  .form-group
+    = link_to_add_fields 'Add New Paper', f, :papers
+
+  .col-md-12   
+    .form-group
+      = f.submit 'Update', class: 'btn btn-primary'
