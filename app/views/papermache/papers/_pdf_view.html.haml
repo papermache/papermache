@@ -1,3 +1,3 @@
 %h2= @paper.title
-
-%p Hello, everyone
+.row
+  %iframe{:height => "780", :src => "#{pdfbrowse_papermache_paper_path(@paper)}" , :style => "border: none;", :width => "100%"}

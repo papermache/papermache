@@ -2,7 +2,7 @@ require 'rubygems'
 require 'pdf/reader'
 
 class Papermache::PapersController < ApplicationController
-  before_action :find_paper, only: [:show, :edit, :update, :destroy]
+  before_action :find_paper, only: [:show, :edit, :update, :destroy, :pdfbrowse]
   helper_method :sort_column, :sort_direction
   
   def index
@@ -15,9 +15,6 @@ class Papermache::PapersController < ApplicationController
 
     # Search
     @papers = ::Papermache::Paper.search(params[:query]).reorder(sort_column + ' ' + sort_direction).paginate(per_page: 10, page: params[:page])
-  end
-
-  def pdf_browse
   end
 
   def show
@@ -34,6 +31,11 @@ class Papermache::PapersController < ApplicationController
     else 
       redirect_to :back, notice: 'Something went wrong.'
     end 
+  end
+
+  # pdf view
+  def pdfbrowse
+    puts "asdhflkjahsdlkfhoqhweoirhqpowihfoihad*****************************************************************s;lhfoihqwoeihfopiwhsepohewopifhoihewoifhc"
   end
 
   # Voting

@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  namespace :papermache do
-  get 'papers/pdf_browse'
-  end
-
   get 'papermache/profile'
   get 'papermache/sign_up'
   get 'papermache/search'
@@ -41,14 +37,17 @@ Rails.application.routes.draw do
 
   namespace :papermache do
       # some fb controller specific routes
+      # get 'papers/pdf_browse'
       resources :papers do
         member do
-          put 'like', to: 'papermache/papers#upvote' 
-          put 'dislike', to: 'papermache/papers#downvote' 
+          put 'like', to: 'papers#upvote' 
+          put 'dislike', to: 'papers#downvote'
+          get 'pdfbrowse', to: 'papers#pdfbrowse'
         end
       end
   end
 
   get 'tags/:tag', to: 'papermache/papers#index', as: :tag
 
+  mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
 end

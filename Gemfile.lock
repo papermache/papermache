@@ -154,6 +154,9 @@ GEM
       hashery (~> 2.0)
       ruby-rc4
       ttfunk
+    pdfjs_viewer-rails (0.0.9)
+      rails (> 4.2.0)
+      sass-rails (~> 5.0)
     pg (0.18.4)
     pg_search (1.0.5)
       activerecord (>= 3.1)
@@ -265,6 +268,7 @@ DEPENDENCIES
   omniauth-facebook
   owlcarousel-rails
   paper-pdf-parser (~> 0.1.0)
+  pdfjs_viewer-rails
   pg (~> 0.15)
   pg_search
   pry-rails

@@ -9,6 +9,6 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
   %body
     -# = render 'layouts/navbar' unless current_page?(new_account_path)
-    = render 'layouts/navbar'
+    = render 'layouts/navbar' unless current_page?(pdfbrowse_papermache_paper_path)
     = yield
-    = render 'layouts/footer'
+    = render 'layouts/footer' unless current_page?(pdfbrowse_papermache_paper_path)
