@@ -31,38 +31,11 @@
         %h5
           Fall 2016
         .scroll
-          .doc
-            = image_tag 'doc-icon.png'
-            %p
-              Bio 201
-          .doc
-            = image_tag 'doc-icon.png'
-            %p
-              Bio 201
-          .doc
-            = image_tag 'doc-icon.png'
-            %p
-              Bio 201
-          .doc
-            = image_tag 'doc-icon.png'
-            %p
-              Bio 201
-          .doc
-            = image_tag 'doc-icon.png'
-            %p
-              Bio 201
-          .doc
-            = image_tag 'doc-icon.png'
-            %p
-              Bio 201
-          .doc
-            = image_tag 'doc-icon.png'
-            %p
-              Bio 201
-          .doc
-            = image_tag 'doc-icon.png'
-            %p
-              Bio 201
+          - @account.papers.each do |paper| 
+            .doc
+              = link_to paper do
+                = image_tag 'doc-icon.png'
+                %p= paper.title
         %nav
           %ul.pagination.pagination-sm
             %li
