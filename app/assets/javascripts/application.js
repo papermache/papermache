@@ -33,6 +33,7 @@ $(function() {
     return false;
   });
 
+  /*
   $("#papers p a, #papers .pagination a").on("click", function() {
     $.getScript(this.href);
     return false;
@@ -40,7 +41,7 @@ $(function() {
   $("#papers_search").submit(function() {
     $.get(this.action, $(this).serialize(), null, "script");
     return false;
-  });
+  });*/
 
   // Profile tabs
   $('#myTabs a').click(function (e) {

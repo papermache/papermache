@@ -1,0 +1,24 @@
+.upload-paper{
+  padding-top:60px;
+  .divcenter{
+    text-align: center;
+  }
+  input[type=submit]{
+    background: #f7e100;
+    color: black;
+    // padding: 10px 20px;
+    // margin-right: 5px;
+    // font-style: italic;
+    font-family: 'Eurofurence';
+    // font-size: 17px;
+    border-radius: 0px;
+    &:hover {
+      background: black;
+      color: #f7e100;
+    }
+  }
+  .about{
+    text-align: center;
+    color : grey;
+  }
+}

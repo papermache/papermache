@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     registrations: "registrations" 
   }
 
-  root to: "papermache#home"
+  root to: "home#index"
 
   resources :accounts do
     member do
@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
       post 'follow', to: 'accounts#follow'
       post 'unfollow', to: 'accounts#unfollow'
+
+      get 'uploadpaper', to: 'accounts#upload_paper'
     end 
     get :autocomplete_account_school, :on => :collection
     get :autocomplete_major_name, :on => :collection
@@ -37,7 +39,7 @@ Rails.application.routes.draw do
 
   namespace :papermache do
       # some fb controller specific routes
-      # get 'papers/pdf_browse'
+      get 'papers', to: 'papers#search'
       resources :papers do
         member do
           put 'like', to: 'papers#upvote' 

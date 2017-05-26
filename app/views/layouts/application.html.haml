@@ -8,7 +8,6 @@
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
   %body
-    -# = render 'layouts/navbar' unless current_page?(new_account_path)
-    = render 'layouts/navbar' unless current_page?(pdfbrowse_papermache_paper_path)
+    = render :partial => 'layouts/navbar' if !@paper || !current_page?(pdfbrowse_papermache_paper_path(@paper))
     = yield
-    = render 'layouts/footer' unless current_page?(pdfbrowse_papermache_paper_path)
+    = render :partial => 'layouts/footer' if !@paper || !current_page?(pdfbrowse_papermache_paper_path(@paper))

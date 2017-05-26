@@ -34,35 +34,8 @@
           .doc
             = image_tag 'doc-icon.png'
             %p
-              Bio 201
-          .doc
-            = image_tag 'doc-icon.png'
-            %p
-              Bio 201
-          .doc
-            = image_tag 'doc-icon.png'
-            %p
-              Bio 201
-          .doc
-            = image_tag 'doc-icon.png'
-            %p
-              Bio 201
-          .doc
-            = image_tag 'doc-icon.png'
-            %p
-              Bio 201
-          .doc
-            = image_tag 'doc-icon.png'
-            %p
-              Bio 201
-          .doc
-            = image_tag 'doc-icon.png'
-            %p
-              Bio 201
-          .doc
-            = image_tag 'doc-icon.png'
-            %p
-              Bio 201
+              = @paper.title
+
         %nav
           %ul.pagination.pagination-sm
             %li
@@ -106,6 +79,8 @@
             = render 'details'
           #friends.tab-pane{:role => "tabpanel"}
             = render 'friends'
+          #pdf_view.tab-pane{:role => "tabpanel"}
+            = render 'pdf_view'
 
           -# - if current_student && current_student == @account.student
           -#   #edit_general_info.tab-pane{:role => "tabpanel"}

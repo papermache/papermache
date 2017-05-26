@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
   
-  before_action :find_account, only: [:show, :edit, :update, :destroy]
+  before_action :find_account, only: [:show, :edit, :update, :destroy, :upload_paper]
   autocomplete :account, :school, :full => true
   autocomplete :major, :name, :full => true, extra_data: [:id]
 
@@ -43,6 +43,10 @@ class AccountsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def upload_paper
+    @friends = @account.all_following + @account.followers
   end
 
   # Voting

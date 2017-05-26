@@ -1,0 +1,19 @@
+.jumbotron.search_jumb
+  .container
+    .col-md-6
+      -# %form{:role => "search"}
+      = form_tag papermache_papers_path, method: :get, id: 'papers_search', role: "search" do
+        = hidden_field_tag :direction, params[:direction]
+        = hidden_field_tag :sort, params[:sort]
+        = text_field_tag :query, params[:query], placeholder: 'Title, Author, Description, Tag', class: 'form-control', id: 'search_input'
+        .buttons
+          = link_to 'Search Papers', '#', id: 'submit_search_papers', class: 'btn btn-default'
+
+    #paper
+      = render 'found_papers'
+
+:javascript
+  $("#submit_search_papers").on("click", function() {
+      $("#papers_search").submit();
+      return false;
+  });

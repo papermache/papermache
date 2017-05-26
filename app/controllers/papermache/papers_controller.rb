@@ -17,6 +17,10 @@ class Papermache::PapersController < ApplicationController
     @papers = ::Papermache::Paper.search(params[:query]).reorder(sort_column + ' ' + sort_direction).paginate(per_page: 10, page: params[:page])
   end
 
+  def search
+    @papers = ::Papermache::Paper.search(params[:query]).reorder(sort_column + ' ' + sort_direction).paginate(per_page: 10, page: params[:page])
+  end
+
   def show
     @account = @paper.account
     @friends = @account.all_following + @account.followers

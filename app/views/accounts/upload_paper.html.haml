@@ -88,18 +88,9 @@
             %li{:role => "presentation"}
               %a{"aria-controls" => "profile", "data-toggle" => "tab", :href => "#friends", :role => "tab"}
                 Peers
-            -# %li{:role => "presentation"}
-            -#   %a{"aria-controls" => "edit_general_info", "data-toggle" => "tab", :href => "#edit_general_info", :role => "tab"}
-            -#     Edit General Info
-            -# %li{:role => "presentation"}
-            -#   %a{"aria-controls" => "edit_education_info", "data-toggle" => "tab", :href => "#edit_education_info", :role => "tab"}
-            -#     Edit Education Info
-            -# %li{:role => "presentation"}
-            -#   %a{"aria-controls" => "manage_papers", "data-toggle" => "tab", :href => "#manage_papers", :role => "tab"}
-            -#     Manage Papers
-            -# %li{:role => "presentation"}
-            -#   %a{"aria-controls" => "new_paper", "data-toggle" => "tab", :href => "#new_paper", :role => "tab"}
-            -#     Add Paper
+            %li{:role => "presentation"}
+              %a{:id => "tab_new_paper", "aria-controls" => "new_paper", "data-toggle" => "tab", :href => "#new_paper", :role => "tab", :style => "display:none"}
+                Add Paper
 
         .tab-content
           #profile.tab-pane.active{:role => "tabpanel"}
@@ -107,15 +98,9 @@
           #friends.tab-pane{:role => "tabpanel"}
             = render 'friends'
 
-          -# - if current_student && current_student == @account.student
-          -#   #edit_general_info.tab-pane{:role => "tabpanel"}
-          -#     = render 'edit_general_info_form'
-          -#   #edit_education_info.tab-pane{:role => "tabpanel"}
-          -#     = render 'edit_education_form'
-          -#   #manage_papers.tab-pane{:role => "tabpanel"}
-          -#     = render 'edit_paper_form'
-          -#   #new_paper.tab-pane{:role => "tabpanel"}
-          -#     = render 'papermache/papers/form'
+          - if current_student && current_student == @account.student
+            #new_paper.tab-pane{:role => "tabpanel"}
+              = render 'papermache/papers/form'
 
 
 
@@ -124,4 +109,5 @@
   $('#myTabs a').click(function (e) {
     e.preventDefault()
     $(this).tab('show')
-  })
+  });
+  $('#tab_new_paper').click();

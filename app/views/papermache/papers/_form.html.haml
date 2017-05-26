@@ -1,23 +1,24 @@
-= form_for Papermache::Paper.new, multipart: true do |f|
-  #error_explanation
-    %ul
-      - Papermache::Paper.new.errors.full_messages.each do |message|
-        %li{style: 'color: red'}= message  
+.upload-paper
+  .row
+    .col-md-6.col-xs-6.col.col-md-offset-3
+      .row
+        = form_for Papermache::Paper.new, multipart: true do |f|
+          #error_explanation
+            %ul
+              - Papermache::Paper.new.errors.full_messages.each do |message|
+                %li{style: 'color: red'}= message  
 
-    .page-header 
-      %h4 New Paper
+            .hidden  
+              = f.label :account_id
+              = f.text_field :account_id, value: @account.id
+            .form-group
+              = f.file_field :file
+            .form-group
+              .input-group
+                = f.text_field :title, class: 'form-control', placeholder: 'Title'
+                .input-group-btn
+                  = f.submit 'Upload', class: 'btn btn-primary'
 
-    .hidden  
-      = f.label :account_id
-      = f.text_field :account_id, value: @account.id
-
-    .form-group
-      = f.label :title 
-      = f.text_field :title, class: 'form-control'
-
-    .form-group
-      = f.label :file 
-      = f.file_field :file 
-
-    .form-group
-      = f.submit 'Submit', class: 'btn btn-primary'
+      .row.about
+        %p
+          Upload your paper in PDF format. Not in PDF format? Don't worry, we'll convert it for you!
