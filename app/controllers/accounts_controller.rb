@@ -14,7 +14,8 @@ class AccountsController < ApplicationController
   end
 
   def show
-    @friends = @account.all_following + @account.followers
+    @friends = Account.all.where("id != ?", current_student.account)
+    # @friends = @account.all_following + @account.followers
   end
 
   def new
