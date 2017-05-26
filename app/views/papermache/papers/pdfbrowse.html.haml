@@ -1,1 +1,7 @@
 = pdfjs_viewer pdf_url: @paper.file.url, style: :full
+
+:javascript
+  var app = new annotator.App();
+  app.include(annotator.ui.main);
+  //app.include(annotator.storage.http);
+  app.start();

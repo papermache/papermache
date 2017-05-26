@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rails4-autocomplete'
 gem 'jquery-ui-rails'
 gem 'pdfjs_viewer-rails'
+gem 'annotator-rails'
 
 group :development, :test do
   gem 'byebug'
