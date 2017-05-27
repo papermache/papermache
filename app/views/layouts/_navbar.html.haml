@@ -13,7 +13,7 @@
       .col-md-1.col-sm-1
       .col-md-8.col-sm-8
         %ul.nav.navbar-nav.nav-center
-          - if current_student and current_student.account.completed?
+          - if current_student and current_student.account and current_student.account.completed?
             -# %li= link_to 'Find Students', accounts_path
             %li= link_to 'Find Papers', papermache_papers_path
             %li= link_to 'Upload Papers', uploadpaper_account_path(current_student.account)     
