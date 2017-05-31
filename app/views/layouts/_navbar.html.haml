@@ -19,7 +19,7 @@
             %li= link_to 'Upload Papers', uploadpaper_account_path(current_student.account)     
         %ul.nav.navbar-nav.navbar-right
 
-          - if current_student and !current_student.account.completed?
+          - if current_student and current_student.account and !current_student.account.completed?
 
             %li.welcome-email
               %span
