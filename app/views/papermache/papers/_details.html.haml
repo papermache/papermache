@@ -34,7 +34,7 @@
       .row
         .col-md-8
         .col-md-4.votes
-          .stats{ id: "paper_#{@paper.id}" } 
+          .stats{ id: "paper_rating_#{@paper.id}" } 
             %table
               %tr
                 %td
@@ -45,11 +45,11 @@
                   Yea
               %tr
                 %td.yellow
-                  = link_to like_papermache_paper_path(@paper), method: :put, remote: true do
+                  = link_to dislike_papermache_paper_path(@paper), method: :put, remote: true do
                     %i.fa.fa-thumbs-down
                 %td
                 %td.grey
-                  = link_to dislike_papermache_paper_path(@paper), method: :put, remote: true do
+                  = link_to like_papermache_paper_path(@paper), method: :put, remote: true do
                     %i.fa.fa-thumbs-up
       .row
         .col-md-8.col-md-offset-2

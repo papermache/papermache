@@ -2,7 +2,7 @@ require 'rubygems'
 require 'pdf/reader'
 
 class Papermache::PapersController < ApplicationController
-  before_action :find_paper, only: [:show, :edit, :update, :destroy, :pdfbrowse]
+  before_action :find_paper, only: [:show, :edit, :update, :destroy, :pdfbrowse, :upvote, :downvote]
   helper_method :sort_column, :sort_direction
   
   def index
