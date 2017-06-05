@@ -446,8 +446,8 @@
                     y = e.pageY,
                     target,
                     offset;
-
-                e.preventDefault();
+                
+                //e.preventDefault();
 
                 setTimeout(function () {
                     var $window;
