@@ -13,7 +13,7 @@
 /tmp
 
 #Ignore vender files
-/vendor
+#/vendor
 /.svn
 /public/uploads
 /.idea
