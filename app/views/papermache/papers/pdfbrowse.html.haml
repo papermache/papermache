@@ -5,3 +5,36 @@
   app.include(annotator.ui.main);
   //app.include(annotator.storage.http);
   app.start();
+
+  $(function() {
+      $.contextMenu({
+          selector: '.context-menu-one', 
+          trigger: 'left',
+          callback: function(key, options) {
+              var m = "clicked: " + key;
+              if(key == "Comment") {
+                alert('Comment');
+                if (this.annotation !== null && typeof this.onCreate === 'function') {
+                  this.onCreate(this.annotation, event);
+                }
+              }else
+                window.console && console.log(m) || alert(m); 
+          },
+          items: {
+              "Comment": {name: "Comment"},
+              "Cite": {
+                name: "Cite", 
+                items: {
+                  "MLA": {name: "MLA"},
+                  "APA": {name: "APA"},
+                  "Chicago": {name: "Chicago"},
+                  "Turbian": {name: "Turabian"}
+                }
+              }
+          }
+      });
+
+      $('.context-menu-one').on('click', function(e){
+          console.log('clicked', this);
+      })    
+  });

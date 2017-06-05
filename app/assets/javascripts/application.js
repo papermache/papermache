@@ -21,6 +21,8 @@
 
 //= require turbolinks
 //= require_tree .
+//= require jquery.contextMenu
+//= require jquery.ui.position
 
 $(function() {
   // Ajax search and filtering
@@ -49,5 +51,6 @@ $(function() {
     e.preventDefault()
     $(this).tab('show')
   });  
+
 });
 
