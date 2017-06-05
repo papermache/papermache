@@ -13146,6 +13146,7 @@ var Adder = Widget.extend({
         $(this.document.body).on("mouseup." + NS, function (e) {
             self._onMouseup(e);
         });
+
     },
 
     destroy: function () {
@@ -13251,15 +13252,15 @@ var Adder = Widget.extend({
 
 
         //Create a new annotation
-        // if (this.annotation !== null && typeof this.onCreate === 'function') {
-            // this.onCreate(this.annotation, event);
-        // }
+        if (this.annotation !== null && typeof this.onCreate === 'function') {
+            this.onCreate(this.annotation, event);
+        }
     }
 });
 
 Adder.template = [
     '<div class="annotator-adder annotator-hide">',
-    // '  <button type="button">' + _t('Annotate') + '</button>',
+    '  <button id="mybutton" type="button" style="display:none">' + _t('Annotate') + '</button>',
 		'	 <span class="context-menu-one btn btn-neutral">right click me</span>',
     '</div>',
 ].join('\n');

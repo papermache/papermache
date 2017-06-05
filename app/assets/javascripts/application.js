@@ -17,12 +17,11 @@
 //= require bootstrap
 //= require jquery-ui/autocomplete
 //= require autocomplete-rails
-//= require annotator
-
 //= require turbolinks
 //= require_tree .
 //= require jquery.contextMenu
 //= require jquery.ui.position
+//= require annotator
 
 $(function() {
   // Ajax search and filtering

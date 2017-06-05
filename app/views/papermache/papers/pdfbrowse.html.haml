@@ -13,10 +13,8 @@
           callback: function(key, options) {
               var m = "clicked: " + key;
               if(key == "Comment") {
-                alert('Comment');
-                if (this.annotation !== null && typeof this.onCreate === 'function') {
-                  this.onCreate(this.annotation, event);
-                }
+                //alert('Comment');
+                $("#mybutton").click(); 
               }else
                 window.console && console.log(m) || alert(m); 
           },
@@ -34,7 +32,4 @@
           }
       });
 
-      $('.context-menu-one').on('click', function(e){
-          console.log('clicked', this);
-      })    
   });
