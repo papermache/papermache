@@ -24,9 +24,9 @@
           = major.name
 
       %p    
-        %i.fa.fa-thumbs-up
+        %i.fa.fa-chevron-up
         = account.get_upvotes.size - account.get_downvotes.size
-        %i.fa.fa-thumbs-down
+        %i.fa.fa-chevron-down
 
       %p
         = render 'following', account: account

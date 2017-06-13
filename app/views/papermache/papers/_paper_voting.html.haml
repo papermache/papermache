@@ -1,9 +1,9 @@
 .paper_voting 
   = link_to like_paper_path(paper), method: :put, remote: true do
-    %i.fa.fa-thumbs-up.fa-2x 
+    %i.fa.fa-chevron-up.fa-2x 
 
   %div{ id: "paper_rating_#{paper.id}" } 
     = render 'papers/paper_rating', paper: paper
 
   = link_to dislike_paper_path(paper), method: :put, remote: true do
-    %i.fa.fa-thumbs-down.fa-2x
+    %i.fa.fa-chevron-down.fa-2x
