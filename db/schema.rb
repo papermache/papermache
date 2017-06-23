@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328144448) do
+ActiveRecord::Schema.define(version: 20170623075536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,27 @@ ActiveRecord::Schema.define(version: 20160328144448) do
   add_index "accounts", ["cached_votes_up"], name: "index_accounts_on_cached_votes_up", using: :btree
   add_index "accounts", ["student_id"], name: "index_accounts_on_student_id", using: :btree
 
+  create_table "annotator_store_annotations", force: :cascade do |t|
+    t.string   "version"
+    t.text     "text"
+    t.text     "quote"
+    t.string   "uri"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "annotator_store_ranges", force: :cascade do |t|
+    t.integer  "annotation_id"
+    t.string   "start"
+    t.string   "end"
+    t.integer  "start_offset"
+    t.integer  "end_offset"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "annotator_store_ranges", ["annotation_id"], name: "index_annotator_store_ranges_on_annotation_id", using: :btree
+
   create_table "follows", force: :cascade do |t|
     t.integer  "followable_id",                   null: false
     t.string   "followable_type",                 null: false
@@ -93,17 +114,20 @@ ActiveRecord::Schema.define(version: 20160328144448) do
     t.string   "title"
     t.string   "file"
     t.integer  "account_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.integer  "cached_votes_total", default: 0
-    t.integer  "cached_votes_score", default: 0
-    t.integer  "cached_votes_up",    default: 0
-    t.integer  "cached_votes_down",  default: 0
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.integer  "cached_votes_total",      default: 0
+    t.integer  "cached_votes_score",      default: 0
+    t.integer  "cached_votes_up",         default: 0
+    t.integer  "cached_votes_down",       default: 0
     t.text     "about"
     t.string   "themes"
     t.date     "date_of_creating"
     t.string   "professor"
     t.string   "grade"
+    t.integer  "cached_weighted_score",   default: 0
+    t.integer  "cached_weighted_total",   default: 0
+    t.float    "cached_weighted_average", default: 0.0
   end
 
   add_index "papers", ["account_id"], name: "index_papers_on_account_id", using: :btree
@@ -111,6 +135,9 @@ ActiveRecord::Schema.define(version: 20160328144448) do
   add_index "papers", ["cached_votes_score"], name: "index_papers_on_cached_votes_score", using: :btree
   add_index "papers", ["cached_votes_total"], name: "index_papers_on_cached_votes_total", using: :btree
   add_index "papers", ["cached_votes_up"], name: "index_papers_on_cached_votes_up", using: :btree
+  add_index "papers", ["cached_weighted_average"], name: "index_papers_on_cached_weighted_average", using: :btree
+  add_index "papers", ["cached_weighted_score"], name: "index_papers_on_cached_weighted_score", using: :btree
+  add_index "papers", ["cached_weighted_total"], name: "index_papers_on_cached_weighted_total", using: :btree
 
   create_table "research_interests", force: :cascade do |t|
     t.string   "title"

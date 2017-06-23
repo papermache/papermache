@@ -112,3 +112,12 @@ body::-webkit-scrollbar-thumb{
       -moz-border-radius: 0px;
       background-image: none;
     }
+
+@font-face {
+    font-family: 'Eurofurence';
+    src: url('./font/eurof55.ttf');
+}
+
+*{
+  font-family: 'Eurofurence';
+}

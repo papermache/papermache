@@ -52,4 +52,6 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'papermache/papers#index', as: :tag
 
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
+  mount AnnotatorStore::Engine, at: '/annotator_store'
+
 end
