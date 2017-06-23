@@ -1,12 +1,169 @@
 = pdfjs_viewer pdf_url: @paper.file.url, style: :full
-
+%input#temp_sel{:type => "hidden"}
 :javascript
-  var app = new annotator.App();
-  app.include(annotator.ui.main);
-  //app.include(annotator.storage.http);
-  app.start();
+  //var TEXT_LAYER_RENDER_DELAY = 200; // ms  from PDF.js viewer.js
+  var ANNOTATION_RENDER_DELAY = 500; // ms  from PDF.js viewer.js
+  var pageUri = function () {
+      return {
+          beforeAnnotationCreated: function (ann) {
+              ann.uri = window.location.href;
+          }
+      };
+  };
+
+  function test123(){
+    return {
+      annotationsLoaded: function (annotations){
+        console.log(annotations);
+      },
+      annotationCreated: function (annotation){
+        console.log(annotation);
+      }
+    }
+  }
+  var app = new annotator.App()
+      .include(annotator.ui.main)
+      .include(annotator.storage.http, {prefix: 'http://192.168.0.105:3000/annotator_store'})
+      .include(pageUri)
+      .include(test123);
+
+  var cnt = 0;
+  var timerId;
+  var debug = 0;
+  var timerStack = [];      // Timer Stack for PDF Pages
+
+  function isTimerExist(pageId){
+    ret = $.grep(timerStack, function(a){
+        return a.id == pageId+"_timer";
+    });
+    
+    if(ret.length > 0) 
+        return true;
+    return false;
+  }
+  var pageMonitor = function (pageId){
+    console.log("monitoring text layer");
+    //console.log($("#pageContainer1").html());
+    rendered = $("#"+pageId).find(".textLayer").html();
+    console.log(pageId);
+    if(rendered){
+      console.log("text rendered!!!");
+
+      
+      app.destroy().then(function(){
+        console.log("**********************destory all annotations**************************");
+        app = new annotator.App()
+          .include(annotator.ui.main)
+          .include(annotator.storage.http, {prefix: 'http://192.168.0.105:3000/annotator_store'})
+          .include(pageUri)
+          .include(test123);
+        app.start().then(function(){
+          app.annotations.load({uri: window.location.href});
+        });
+      });
+      
+      orgTimerInfo = $.grep(timerStack, function(a){
+        return a.id == pageId+"_timer";
+      });
+
+      if(orgTimerInfo.length == 0 || !(orgTimerId = orgTimerInfo[0].timerId))
+      {
+        console.log("Warning : Can't found orignal timer");
+        return;
+      }
+
+      Array.prototype.removeValue = function(name, value){
+        var array = $.map(this, function(v,i){
+            return v[name] === value ? null : v;
+        });
+        this.length = 0; //clear original array
+        this.push.apply(this, array); //push all elements except the one we want to delete
+      }
+
+      if(pageId == "pageContainer3"){
+        debug = true;
+      }
+
+      console.log("Deleted the found timer from timer stack");
+      timerStack.removeValue('id', pageId+"_timer");
+
+      console.log(timerStack);
+      console.log("Finding corresonding timer info...");
+      console.log(orgTimerId);
+      orgTimerId = parseInt(orgTimerId);
+      clearInterval(orgTimerId);
+      if(pageId == "pageContainer3"){
+        debug = true;
+      }
+    }
+  }
+  
+  app.start().then(function(){
+    console.log("app.started");
+  
+    document.addEventListener('pagerendered', function (e) {
+      // get page number
+      currentPageNum= parseInt(document.getElementById('pageNumber').value);
+      currentPageNum = (currentPageNum == 1) ? currentPageNum : currentPageNum++;
+
+      // rendered page info
+      //console.log(e);
+      //console.log(e.target);
+      //console.log(e.target.id)
+      renderedPage = e.target.id;
+      //console.log(e.target);
+      //console.log(document.getElementById("pdfjs_viewer_full"))
+      //console.log("App: ");
+      //console.log(app);
+      console.log("(((((((((((((((((((((((((((((Page Rendered "+renderedPage+" Annotation Loading)))))))))))))))))))))))))))))))))))))))");
+      console.log("Page Number : " + currentPageNum);
+      console.log("Render Times : " + (++cnt));
+      if(cnt == 1) return;
+
+      //check if timer exists
+      if(isTimerExist(renderedPage))
+        return;
+        
+      console.log("Create Timer Interval: " + renderedPage + "************************** "+ debug);
+      timerId = setTimeout(function(){pageMonitor(renderedPage)}, ANNOTATION_RENDER_DELAY);
+
+      console.log("TImer Id= : "+ timerId + " timer created.");
+
+      var timerInfo = {};
+      timerInfo.id = renderedPage+"_timer";
+      timerInfo.timerId = timerId;
+      console.log("added timer into Timer Stack");
+      timerStack.push(timerInfo);
+
+      console.log(timerStack);
+
+      /*
+      setTimeout(function(){
+          app.annotations.load({uri: window.location.href});
+          console.log("Annotation Loaded");
+        }, 250);
+      */
+      /*    
+      app_start.then(function(){
+        //app.annotations.load({uri: window.location.href});
+        //console.log("load ok");
+
+        setTimeout(function(){
+        app.annotations.load({uri: window.location.href});
+          console.log("Annotation Loaded");
+        }, 100);
+      });
+      */
+
+    });
+  });
+
+ 
 
   $(function() {
+      function func_test(){
+        console.log('******asdfasdfsadfasdfasfsafcsdafsd');
+      }
       $.contextMenu({
           selector: '.context-menu-one', 
           trigger: 'left',
@@ -15,8 +172,18 @@
               if(key == "Comment") {
                 //alert('Comment');
                 $("#mybutton").click(); 
-              }else
-                window.console && console.log(m) || alert(m); 
+              }else if (key == "MLA"){
+                //Create a new annotation
+                // if (this.annotation !== null && typeof this.onCreate === 'function') {
+                //     this.onCreate(this.annotation, event);
+                // }
+                func_test();
+                alert($("#temp_sel").val());
+                console.log(this);
+              }
+              else{
+                window.console && console.log(m) || alert(m);                 
+              }
           },
           items: {
               "Comment": {name: "Comment"},
