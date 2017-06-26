@@ -23,4 +23,9 @@ class Papermache::Paper < ActiveRecord::Base
                     tags: :name
                   },
                   ignoring: :accents
+
+  def sma
+    result = ActiveRecord::Base.connection.execute("SELECT GET_PAPER_SMA(#{self.id});")
+    return result.getvalue(0,0)
+  end
 end
