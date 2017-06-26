@@ -18,3 +18,4 @@
 /public/uploads
 /.idea
 /.vscode
+/.Gemfile.lock
