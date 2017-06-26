@@ -39,17 +39,17 @@ class Papermache::PapersController < ApplicationController
 
   # pdf view
   def pdfbrowse
-    puts "asdhflkjahsdlkfhoqhweoirhqpowihfoihad*****************************************************************s;lhfoihqwoeihfopiwhsepohewopifhoihewoifhc"
+    puts "asd"
   end
 
   # Voting
 
   def upvote
-    @paper.upvote_by current_student
+    @paper.vote_by voter: current_student, :duplicate => true;
   end
 
   def downvote
-    @paper.downvote_from current_student
+    @paper.vote_by voter: current_student, :vote => 'bad', :duplicate => true;
   end
 
   def pdf_read

@@ -16,6 +16,9 @@ class AccountsController < ApplicationController
   def show
     @friends = Account.all.where("id != ?", current_student.account)
     # @friends = @account.all_following + @account.followers
+
+    # quantified reputation 
+
   end
 
   def new

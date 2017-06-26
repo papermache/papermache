@@ -1,3 +1,5 @@
+require 'pg'
+
 class Account < ActiveRecord::Base
 
   acts_as_votable
@@ -56,6 +58,11 @@ class Account < ActiveRecord::Base
     elsif self.minors.length > 2
       errors[:base] << 'Please choose up to two minors'
     end
+  end
+
+  def quantified_reputation
+    result = ActiveRecord::Base.connection.execute("SELECT GET_USER_REPUTATION(#{self.id});")
+    return result.getvalue(0,0)
   end
 
 end
