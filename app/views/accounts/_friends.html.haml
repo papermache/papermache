@@ -29,3 +29,9 @@
                   %td.grey
                     = link_to like_account_path(friend), method: :put, remote: true do
                       %i.fa.fa-chevron-up
+                %tr
+                  %td.yellow
+                    QR:
+                  %td.qr
+                    = friend.quantified_reputation
+                  %td
