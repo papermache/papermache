@@ -45,11 +45,15 @@ class Papermache::PapersController < ApplicationController
   # Voting
 
   def upvote
-    @paper.vote_by voter: current_student, :duplicate => true;
+    if @paper.account.student != current_student
+      @paper.vote_by voter: current_student, :duplicate => true;
+    end
   end
 
   def downvote
-    @paper.vote_by voter: current_student, :vote => 'bad', :duplicate => true;
+    if @paper.account.student != current_student
+      @paper.vote_by voter: current_student, :vote => 'bad', :duplicate => true;
+    end
   end
 
   def pdf_read
