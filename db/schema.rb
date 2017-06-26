@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170623093058) do
+ActiveRecord::Schema.define(version: 20170626072547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,10 @@ ActiveRecord::Schema.define(version: 20170623093058) do
   add_index "accounts", ["cached_votes_up"], name: "index_accounts_on_cached_votes_up", using: :btree
   add_index "accounts", ["student_id"], name: "index_accounts_on_student_id", using: :btree
 
+  create_table "all_votes_score", id: false, force: :cascade do |t|
+    t.integer "sum", limit: 8
+  end
+
   create_table "annotator_store_annotations", force: :cascade do |t|
     t.string   "version"
     t.text     "text"
@@ -84,6 +88,10 @@ ActiveRecord::Schema.define(version: 20170623093058) do
   end
 
   add_index "annotator_store_ranges", ["annotation_id"], name: "index_annotator_store_ranges_on_annotation_id", using: :btree
+
+  create_table "downvote", id: false, force: :cascade do |t|
+    t.integer "count", limit: 8
+  end
 
   create_table "follows", force: :cascade do |t|
     t.integer  "followable_id",                   null: false
@@ -194,6 +202,10 @@ ActiveRecord::Schema.define(version: 20170623093058) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
+  create_table "upvote", id: false, force: :cascade do |t|
+    t.integer "count", limit: 8
+  end
 
   create_table "votes", force: :cascade do |t|
     t.integer  "votable_id"
