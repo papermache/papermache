@@ -1,0 +1,23 @@
+.profile-reviews
+  - @friends.each_slice(2) do |friend2slice|
+    .row
+      - friend2slice.each do |friend|
+        .col-md-5.col-sm-5.col-xs-12
+          .col-md-3.col-sm-2.col-xs-4
+            = link_to friend do
+              = image_tag friend.avatar
+          .col-md-9.col-sm-10.col-xs-8
+            %h5
+              = friend.full_name
+            %h6
+              - friend.majors.each do |major|
+                = major.name
+            .stats{ id: "account_#{friend.id}" } 
+              %table
+                %tr
+                  %td.yellow
+                    QR:
+                  %td.qr
+                    = friend.quantified_reputation
+                  %td
+                    
