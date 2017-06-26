@@ -1,6 +1,6 @@
 class AddVotingLibFunctionToDb < ActiveRecord::Migration
   def self.up
-    excute "
+    execute "
             CREATE OR REPLACE FUNCTION public.get_paper_sma(
               paper_id integer)
                 RETURNS double precision
@@ -41,7 +41,7 @@ class AddVotingLibFunctionToDb < ActiveRecord::Migration
 
             ALTER FUNCTION public.get_paper_sma(integer)
                 OWNER TO postgres;"
-    excute "
+    execute "
             CREATE OR REPLACE FUNCTION public.get_paper_user_gainlosses(
               paper_id integer,
               user_id integer)
@@ -73,7 +73,7 @@ class AddVotingLibFunctionToDb < ActiveRecord::Migration
 
             ALTER FUNCTION public.get_paper_user_gainlosses(integer, integer)
                 OWNER TO postgres;"
-    excute "
+    execute "
             CREATE OR REPLACE FUNCTION public.get_paper_user_score(
               paper_id integer,
               user_id integer)
@@ -108,7 +108,7 @@ class AddVotingLibFunctionToDb < ActiveRecord::Migration
 
             ALTER FUNCTION public.get_paper_user_score(integer, integer)
                 OWNER TO postgres;"
-    excute "
+    execute "
             CREATE OR REPLACE FUNCTION public.get_user_allpaper_votescore(
               user_id integer)
                 RETURNS integer
@@ -132,7 +132,7 @@ class AddVotingLibFunctionToDb < ActiveRecord::Migration
 
             ALTER FUNCTION public.get_user_allpaper_votescore(integer)
                 OWNER TO postgres;"
-    excute "
+    execute "
             CREATE OR REPLACE FUNCTION public.get_user_reputation(
               user_id integer)
                 RETURNS double precision
@@ -166,10 +166,10 @@ class AddVotingLibFunctionToDb < ActiveRecord::Migration
   end
 
   def self.down
-    excute "DROP FUNCTION public.get_paper_sma(integer);"
-    excute "DROP FUNCTION public.get_paper_user_gainlosses(integer, integer);"
-    excute "DROP FUNCTION public.get_paper_user_score(integer, integer);"
-    excute "DROP FUNCTION public.get_user_allpaper_votescore(integer);"
-    excute "DROP FUNCTION public.get_user_reputation(integer);"
+    execute "DROP FUNCTION public.get_paper_sma(integer);"
+    execute "DROP FUNCTION public.get_paper_user_gainlosses(integer, integer);"
+    execute "DROP FUNCTION public.get_paper_user_score(integer, integer);"
+    execute "DROP FUNCTION public.get_user_allpaper_votescore(integer);"
+    execute "DROP FUNCTION public.get_user_reputation(integer);"
   end
 end
