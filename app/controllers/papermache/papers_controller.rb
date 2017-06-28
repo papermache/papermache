@@ -28,7 +28,8 @@ class Papermache::PapersController < ApplicationController
 
   def show
     @account = @paper.account
-    @friends = @account.all_following + @account.followers
+    # @friends = @account.all_following + @account.followers
+    @friends = Account.all.where("id != ?", @account)
   end
 
   def create
