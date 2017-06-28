@@ -72,14 +72,19 @@
           }
         }
       }
-      p.sma{
-        padding-top:20px; 
-        color: red;
-        border: 1px solid black;
-        width: 50%;
-        padding: 0.5em;
-        font-weight: bold;
-        font-family: fantasy;
+      #paper_preview{
+        padding-top:60px; 
+        p.sma{
+          padding-top:20px; 
+          color: red;
+          border: 1px solid black;
+          width: 70%;
+          padding: 0.5em;
+          font-weight: bold;
+          font-family: fantasy;
+          text-align: center;
+          letter-spacing: 0.1em;
+        }
       }
       .interact{
         padding-top:10px;
