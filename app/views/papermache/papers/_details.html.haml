@@ -40,17 +40,21 @@
                 %td
                   Yea
                 %td.count
-                  = @paper.cached_votes_score
+                  = @paper.cached_weighted_score
                 %td
                   Nay
               %tr
                 %td.yellow
-                  = link_to like_papermache_paper_path(@paper), method: :put, remote: true do
+                  = link_to "#", :id => "paper_upvote", :"data-href" => like_papermache_paper_path(@paper) do
                     %i.fa.fa-chevron-up
+                  -# = link_to like_papermache_paper_path(@paper), method: :put, remote: true do
+                  -#   %i.fa.fa-chevron-up
                 %td
                 %td.grey
-                  = link_to dislike_papermache_paper_path(@paper), method: :put, remote: true do
+                  = link_to "#", :id => "paper_downvote", :"data-href" => dislike_papermache_paper_path(@paper) do
                     %i.fa.fa-chevron-down
+                  -# = link_to dislike_papermache_paper_path(@paper), method: :put, remote: true do
+                  -#   %i.fa.fa-chevron-down
   
       .row
         .col-md-8.col-md-offset-4
@@ -62,3 +66,54 @@
           .interact
             .image
               = link_to 'Click to Interact', '#pdf_view', {"data-toggle" => "tab", :role => "tab"}
+:javascript
+  $('#paper_upvote').on('click', function(event){
+    event.preventDefault();
+    n = prompt("Input the volume of share of votes", "1");
+    if(n == null)
+      return;
+    if(isNaN(n))
+    {
+      console.log("Invalid integer value") || alert('Invalid integer value');
+      return;
+    }
+    n = parseInt(n);
+    if(n == NaN)
+    {
+      console.log('Inpted value is not integer');
+      return;
+    }
+    console.log("Paper Upvote Button Click : " + n);
+    $.ajax({
+      url: $(this).attr('data-href'),
+      type: 'PUT',
+      data: "volume=" + n, 
+      success: function(data){} 
+    });
+
+  });
+  $('#paper_downvote').on('click', function(event){
+    event.preventDefault();
+    n = prompt("Input the volume of share of votes", "1");
+    if(n == null)
+      return;
+    if(isNaN(n))
+    {
+      console.log("Invalid integer value") || alert('Invalid integer value');
+      return;
+    }
+    n = parseInt(n);
+    if(n == NaN)
+    {
+      console.log('Inpted value is not integer');
+      return;
+    }
+    console.log("Paper Upvote Button Click : " + n);
+    $.ajax({
+      url: $(this).attr('data-href'),
+      type: 'PUT',
+      data: "volume=" + n, 
+      success: function(data){} 
+    });
+
+  });
