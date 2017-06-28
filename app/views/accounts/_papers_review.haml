@@ -1,0 +1,37 @@
+.papers-review
+  - @account.papers.each_slice(2) do |friend2slice|
+    .row
+      - friend2slice.each do |paper|
+        .col-md-5.col-sm-5.col-xs-12
+          .col-md-3.col-sm-2.col-xs-4
+            = link_to paper do
+              = image_tag 'doc-icon.png'
+          .col-md-9.col-sm-10.col-xs-8
+            %h6
+              = "Title: #{paper.title}"
+            %h6
+              = "Uploaded Date: #{paper.updated_at}"
+            .stats{ id: "account_#{paper.id}" } 
+              %table
+                %tr
+                  %td
+                    %a.votesinfo.sma{:title => "SMA", :href => "#{@account}"}
+                      %i.fa.fa-spinner.fa-spin
+                      %span.qr
+                        = paper.sma                    
+                  %td
+                    %a.votesinfo.upvote{:title => "upvote", :href => "#{@account}"}
+                      %i.fa.fa-plus-square
+                      %span.qr
+                        = paper.cached_votes_up
+                  %td
+                    %a.votesinfo.downvote{:title => "downvote", :href => "#{@account}"}
+                      %i.fa.fa-minus-square
+                      %span.qr
+                        = paper.cached_votes_down
+                  %td
+                    %a.votesinfo.score{:title => "score", :href => "#{@account}"}
+                      %i.fa.fa-star
+                      %span.qr
+                        = paper.cached_weighted_score
+                    
