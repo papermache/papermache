@@ -6,19 +6,24 @@ class Papermache::PapersController < ApplicationController
   helper_method :sort_column, :sort_direction
   
   def index
-    # if params[:tag]
-    #   @papers = Paper.tagged_with(params[:tag]).paginate(per_page: 10, page: params[:page])
-    # else
-    #   # Searc
-    #   @papers = Paper.search(params[:query]).reorder(sort_column + ' ' + sort_direction).paginate(per_page: 10, page: params[:page])
-    # end
+    if params[:tag]
+      @papers = ::Papermache::Paper.tagged_with(params[:tag]).paginate(per_page: 10, page: params[:page])
+    else
+      # Search
+      @papers = ::Papermache::Paper.search(params[:query]).reorder(sort_column + ' ' + sort_direction).paginate(per_page: 10, page: params[:page])
+    end
 
-    # Search
-    @papers = ::Papermache::Paper.search(params[:query]).reorder(sort_column + ' ' + sort_direction).paginate(per_page: 10, page: params[:page])
   end
 
   def search
-    @papers = ::Papermache::Paper.search(params[:query]).reorder(sort_column + ' ' + sort_direction).paginate(per_page: 10, page: params[:page])
+     if params[:tag]
+      @papers = ::Papermache::Paper.tagged_with(params[:tag]).paginate(per_page: 10, page: params[:page])
+    else
+      # Search
+      @papers = ::Papermache::Paper.search(params[:query]).reorder(sort_column + ' ' + sort_direction).paginate(per_page: 10, page: params[:page])
+    end
+
+    # @papers = ::Papermache::Paper.search(params[:query]).reorder(sort_column + ' ' + sort_direction).paginate(per_page: 10, page: params[:page])
   end
 
   def show
