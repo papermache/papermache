@@ -31,7 +31,25 @@
                       %i.fa.fa-chevron-up
                 %tr
                   %td.yellow
-                    QR:
+                    score :
                   %td.qr
                     = friend.quantified_reputation
                   %td
+                %tr
+                  %td.yellow
+                    uploads:
+                  %td.qr
+                    = friend.uploaded_paper_cnt
+                  %td
+                %tr
+                  %td.yellow
+                    recived:
+                  %td.qr
+                    = friend.allpaper_received_votes
+                  %td   
+                %tr
+                  %td.yellow
+                    voted:
+                  %td.qr
+                    = friend.voted_papers_cnt
+                  %td                                                   
