@@ -61,9 +61,9 @@
             %li{:role => "presentation"}
               %a{"aria-controls" => "profile", "data-toggle" => "tab", :href => "#friends", :role => "tab"}
                 Peers
-            -# %li{:role => "presentation"}
-            -#   %a{"aria-controls" => "peerreview", "data-toggle" => "tab", :href => "#peer_review", :role => "tab"}
-            -#     Reviews
+            %li{:role => "presentation"}
+              %a{"aria-controls" => "papers_review", "data-toggle" => "tab", :href => "#papers_review", :role => "tab"}
+                Reviews
             -# %li{:role => "presentation"}
             -#   %a{"aria-controls" => "edit_general_info", "data-toggle" => "tab", :href => "#edit_general_info", :role => "tab"}
             -#     Edit General Info
@@ -82,8 +82,8 @@
             = render 'details'
           #friends.tab-pane{:role => "tabpanel"}
             = render 'friends'
-          -# #peer_review.tab-pane{:role => "tabpanel"}
-          -#   = render 'peer_review'
+          #papers_review.tab-pane{:role => "tabpanel"}
+            = render 'papers_review'
 
           -# - if current_student && current_student == @account.student
           -#   #edit_general_info.tab-pane{:role => "tabpanel"}
