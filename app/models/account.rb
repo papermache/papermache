@@ -65,4 +65,22 @@ class Account < ActiveRecord::Base
     return result.getvalue(0,0)
   end
 
+  def allpaper_received_votes
+    result = ActiveRecord::Base.connection.execute("SELECT GET_USER_ALLPAPER_VOTESCORE(#{self.id});")
+    return result.getvalue(0,0)    
+  end
+
+  def uploaded_paper_cnt
+    self.papers.count
+  end
+
+  def voted_papers_cnt
+    result = ActiveRecord::Base.connection.execute("
+                                            SELECT (SELECT COUNT(DISTINCT(VOTABLE_ID)) FROM VOTES 
+                                          WHERE VOTABLE_TYPE='Papermache::Paper' 
+                                          AND VOTER_ID = #{self.student_id}) VOTED_PAPERS;
+                                          ")
+    return result.getvalue(0,0)   
+  end
+
 end
