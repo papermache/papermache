@@ -74,6 +74,21 @@
             }
           }
         }
+        .nav_btns{
+          padding-top:20px;
+          text-align: center;
+          a{
+            color:black;
+            padding: 10px 20px;
+            font-family: 'Eurofurence';
+            background: #f7e100;
+            &:hover {
+              background: black;
+              color: #f7e100;
+              text-decoration: none;
+            }
+          }
+        }
         nav {
           text-align: center;
           ul.pagination.pagination-sm {
