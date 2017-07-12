@@ -25,7 +25,13 @@ class Papermache::Paper < ActiveRecord::Base
                   ignoring: :accents
 
   def sma
-    result = ActiveRecord::Base.connection.execute("SELECT GET_PAPER_SMA(#{self.id});")
-    return result.getvalue(0,0)
+    result = ActiveRecord::Base.connection.exec_query("SELECT GET_SMA(#{self.id});")
+    return result.rows[0][0]
   end
+
+  def sma_detail
+    result = ActiveRecord::Base.connection.exec_query("SELECT * FROM GET_SMA_VIEW(#{self.id});")
+    return result.to_hash
+  end
+
 end

@@ -1,0 +1,158 @@
+.jumbotron.test
+  .container
+    .col-lg-6
+      .panel.panel-default
+        .panel-heading
+          Voting Info ,
+          %b
+            = @account.full_name
+        / /.panel-heading
+        .panel-body
+          .table-responsive
+            %table.table.table-striped.table-data
+              %thead
+                %tr
+                  %th #
+                  %th Title
+                  %th Yea
+                  %th Nay
+                  %th Upvote
+                  %th Downvote
+              %tbody
+                - @papers.each_with_index do |paper, index|
+                  %tr
+                    %td 
+                      = index+1
+                    %td
+                      = paper.title
+                    %td 
+                      = (paper.cached_weighted_score + paper.cached_weighted_total)/2
+                    %td
+                      = (-paper.cached_weighted_score + paper.cached_weighted_total)/2
+                    %td
+                      = paper.cached_votes_up
+                    %td
+                      = paper.cached_votes_down 
+          / /.table-responsive
+        / /.panel-body
+      / /.panel
+      .table-responsive
+        .col-lg-offset-6.col-lg-6
+          %table.table.table-bordered.sma_total
+            %tbody
+              %tr
+                %td  
+                %td Votes
+                %td Peers
+                %td AVG
+              %tr
+                %td Yea
+                %td 
+                  = @yea_votes
+                %td
+                  = @yea_peers
+                %td
+                  = @yea_avg
+              %tr
+                %td Nay
+                %td
+                  = @nay_votes
+                %td
+                  = @nay_peers
+                %td
+                  = @nay_avg
+          %table.table
+            %tbody
+              %tr
+                %td.sma
+                  DIFF : 
+                  = @diff.to_f
+    .col-lg-6
+      .panel.panel-default
+        .panel-heading
+          Gain/Losses ,
+          %b
+            = @account.full_name
+        / /.panel-heading
+        .panel-body
+          .table-responsive
+            %table.table.table-striped
+              %thead
+                %tr
+                  %th #
+                  %th Title
+                  %th SMA
+                  %th Cast
+                  %th Peers
+                  %th G\L
+              %tbody
+                - @voted_papers.each_with_index do |paper, index|
+                  %tr
+                    %td 
+                      = index+1
+                    %td
+                      = paper.title
+                    %td
+                      = paper.sma
+                    %td
+                      = @account.vote_cast_for(paper.id)
+                    %td
+                      = paper.cached_votes_total             
+                    %td 
+                      = @account.gain_losses_paper(paper.id)       
+          / /.table-responsive
+        / /.panel-body
+      / /.panel
+      .table-responsive
+        .col-lg-offset-6.col-lg-6
+          %table.table.table-bordered.sma_total
+            %tbody
+              %tr
+                %td  
+                %td Cast
+                %td Papers
+                %td AVG
+              %tr
+                %td Yea
+                %td 
+                  = @upvote_cast
+                %td
+                  = @yea_papers
+                %td
+                  = @yea_cast_avg
+              %tr
+                %td Nay
+                %td
+                  = @downvote_cast
+                %td
+                  = @nay_papers
+                %td
+                  = @nay_cast_avg
+          %table.table
+            %tbody
+              %tr
+                %td.sma
+                  Gain/Losses : 
+                  = @gain_losses
+    .col-lg-12
+      .table-responsive
+        .col-lg-offset-6.col-lg-6
+          %table.table.table-bordered.sma_total
+            %tbody
+              %tr
+                %td 
+                %td SUM
+              %tr
+                %td DIFF
+                %td 
+                  = @diff.to_f
+              %tr
+                %td Gain/Losses
+                %td
+                  = @gain_losses
+          %table.table
+            %tbody
+              %tr
+                %td.sma
+                  Quantified Reputation : 
+                  = @qr

@@ -61,13 +61,13 @@ class Account < ActiveRecord::Base
   end
 
   def quantified_reputation
-    result = ActiveRecord::Base.connection.execute("SELECT GET_USER_REPUTATION(#{self.id});")
-    return result.getvalue(0,0)
+    result = ActiveRecord::Base.connection.exec_query("SELECT GET_REPUTATION(#{self.id});")
+    return result.rows[0][0]
   end
 
   def allpaper_received_votes
-    result = ActiveRecord::Base.connection.execute("SELECT GET_USER_ALLPAPER_VOTESCORE(#{self.id});")
-    return result.getvalue(0,0)    
+    result = ActiveRecord::Base.connection.exec_query("SELECT GET_VOTES_SCORE(#{self.id});")
+    return result.rows[0][0]  
   end
 
   def uploaded_paper_cnt
@@ -75,12 +75,26 @@ class Account < ActiveRecord::Base
   end
 
   def voted_papers_cnt
-    result = ActiveRecord::Base.connection.execute("
-                                            SELECT (SELECT COUNT(DISTINCT(VOTABLE_ID)) FROM VOTES 
-                                          WHERE VOTABLE_TYPE='Papermache::Paper' 
-                                          AND VOTER_ID = #{self.student_id}) VOTED_PAPERS;
-                                          ")
-    return result.getvalue(0,0)   
+    result = ActiveRecord::Base.connection.exec_query("SELECT GET_VOTED_PAPER_CNT(#{self.student_id});")
+    return result.rows[0][0] 
   end
 
+  def voted_papers
+    voted_papers = Papermache::Paper.find_by_sql ["select * from get_voted_papers(:account_id)", { :account_id => self.id } ]
+  end
+
+  def gain_losses_paper(paper_id)
+    result = ActiveRecord::Base.connection.exec_query("SELECT GET_GAIN_LOSSES_PAPER(#{paper_id}, #{self.id});")
+    return result.rows[0][0] 
+  end
+
+  def vote_cast_for(paper_id)
+    result = ActiveRecord::Base.connection.exec_query("SELECT GET_VOTE_CAST(#{paper_id}, #{self.id});")
+    return result.rows[0][0] 
+  end
+
+  def gain_losses_all
+    result = ActiveRecord::Base.connection.exec_query("SELECT GET_GAIN_LOSSES(#{self.id});")
+    return result.rows[0][0]     
+  end
 end

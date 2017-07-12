@@ -21,13 +21,30 @@
       }
       .col-md-3 {
         padding-left: 0;
-        overflow: hidden;
-        height: 85px;
-        a {
-          img {
-            width: 100%;
+        .avatar{
+          // background: #f7e100;
+          overflow: hidden;
+          height: 85px;
+          a {
+            img {
+              width: 100%;
+            }
           }
         }
+        // p{
+        //   text-align: center;
+        //   background: #f7e100;
+        //   padding: 0.5em;
+        //   font-size: 1em;
+        //   span{
+        //     font-size: 0.7em;
+        //   }
+        //   span.qr{
+        //     font-weight: bold;
+        //     letter-spacing: 0.3em;
+        //     font-size: 1em;
+        //   }
+        // }
       }
       .col-md-9 {
         padding-left: 0;

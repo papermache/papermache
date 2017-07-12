@@ -1,0 +1,35 @@
+// Place all the styles related to the Test controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.test{
+    padding-top: 30px;
+    padding-bottom: 10px;
+    margin: 0;
+    background: #f4f4f4;
+    max-height: 1000px;
+    height:800px;
+  *{
+    font-size : 14px;
+    font-family: monospace;
+  }
+
+  .sma_total{
+    background: white;
+  }
+  td.sma{
+    text-align: right;
+    padding-right: 1em;
+  }
+//   .table-data{
+//     //.tablecontainer { width: 600px; overflow: hidden;}
+//     tr {
+//       display: block; 
+//     }
+//     th, td { width: 300px; }
+//     tbody { 
+//       display: block; 
+//       height: 300px; overflow: auto;
+//     }
+//   }
+ }

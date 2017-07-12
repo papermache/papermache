@@ -1,0 +1,55 @@
+.jumbotron.test
+  .container
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading
+          Paper SMA ,
+          %b
+            = @paper.account.full_name
+           
+          %b
+            = @paper.title 
+        / /.panel-heading
+        .panel-body
+          .table-responsive
+            %table.table.table-striped
+              %thead
+                %tr
+                  %th #
+                  %th Name
+                  %th Yea
+                  %th Nay
+                  %th Score
+              %tbody
+                - @result.each_with_index do |row, index|
+                  %tr
+                    %td 
+                      = index + 1
+                    %td
+                      = row["voter_name"]
+                    %td 
+                      = row["yea"]
+                    %td
+                      = row["nay"]
+                    %td
+                      = row["yea"].to_i - row["nay"].to_i
+          / /.table-responsive
+        / /.panel-body
+      / /.panel
+    .col-lg-offset-9.col-lg-3
+      %table.table.table-bordered.sma_total
+        %tbody
+          %tr
+            %td Peers
+            %td 
+              = @result.size
+          %tr
+            %td SUM
+            %td 
+              = @sum
+
+      %table.table
+        %tbody
+          %tr
+            %td.sma
+              =@paper.sma.to_f

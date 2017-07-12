@@ -4,10 +4,11 @@
       .col-md-2.col-sm-3.col-xs-6
         .image
           = image_tag @account.avatar
-          %p.reputation
-            =@account.quantified_reputation 
-            %br
-            REPUTATION
+          // %p.reputation
+          //   = link_to qrcode_detail_account_path(@account) do
+          //     =@account.quantified_reputation 
+          //   %br
+          //   REPUTATION
       .col-md-10.col-sm-9.col-xs-6
         .about-person
           %h3
@@ -67,7 +68,7 @@
                 Peers
             %li{:role => "presentation"}
               %a{"aria-controls" => "papers_review", "data-toggle" => "tab", :href => "#papers_review", :role => "tab"}
-                Reviews
+                Reputation
             -# %li{:role => "presentation"}
             -#   %a{"aria-controls" => "edit_general_info", "data-toggle" => "tab", :href => "#edit_general_info", :role => "tab"}
             -#     Edit General Info
@@ -87,7 +88,7 @@
           #friends.tab-pane{:role => "tabpanel"}
             = render 'friends'
           #papers_review.tab-pane{:role => "tabpanel"}
-            = render 'papers_review'
+            = render 'reputation'
 
           -# - if current_student && current_student == @account.student
           -#   #edit_general_info.tab-pane{:role => "tabpanel"}

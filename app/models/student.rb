@@ -7,6 +7,8 @@ class Student < ActiveRecord::Base
 
   has_one :account, dependent: :delete
 
+  acts_as_voter
+
   # .edu email validation
   # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.edu/i
 

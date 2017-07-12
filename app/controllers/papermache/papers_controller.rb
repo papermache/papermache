@@ -54,7 +54,7 @@ class Papermache::PapersController < ApplicationController
     if @paper.account.student != current_student
       puts 'dkdkdkd'
       if(params[:volume])
-        @paper.vote_by voter: current_student, :vote_weight => params[:volume], :duplicate => true;
+        @paper.vote_by voter: current_student, :vote_weight => params[:volume];
       end
     end
   end
@@ -62,7 +62,7 @@ class Papermache::PapersController < ApplicationController
   def downvote
     if @paper.account.student != current_student
       if(params[:volume])
-        @paper.vote_by voter: current_student, :vote => 'bad',  :vote_weight => params[:volume], :duplicate => true;
+        @paper.vote_by voter: current_student, :vote => 'bad',  :vote_weight => params[:volume];
       end
     end
   end

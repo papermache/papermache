@@ -23,6 +23,10 @@
       %p
         Date: 
         = @account.graduation_date.strftime('%B %Y')
+    .col-md-6.col-xs-6.major
+      %p.qr
+        = link_to qrcode_detail_account_path(@account) do
+          =@account.quantified_reputation
   .row.research
     .col-md-12
       %h6
