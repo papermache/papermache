@@ -1,0 +1,42 @@
+.jumbotron.test
+  .container
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading
+          Voting Info
+        / /.panel-heading
+        .panel-body
+          .table-responsive
+            %table.table.table-striped
+              %thead
+                %tr
+                  %th #
+                  %th Name
+                  %th QR
+                  %th Papers
+                  %th Up
+                  %th Down
+                  %th Papers(Cast)
+                  %th Gain/Losses
+              %tbody
+                - @temp.each_with_index do |account, index|
+                  %tr
+                    %td 
+                      = index
+                    %td
+                      = account.full_name
+                    %td 
+                      = account.quantified_reputation
+                    %td
+                      %a{:href => "#"}
+                        = account.uploaded_paper_cnt
+                    %td 150
+                    %td 50
+                    %td
+                      %a{:href => "#"}
+                        = account.voted_papers_cnt
+                    %td 32.5
+
+          / /.table-responsive
+        / /.panel-body
+      / /.panel

@@ -39,8 +39,9 @@
               %tr
                 %td
                   Yea
-                %td.count
-                  = @paper.cached_weighted_score
+                %td
+                  %a{:class => "count", :href => "/papermache/papers/#{@paper.id}/sma_detail"}
+                    = @paper.sma
                 %td
                   Nay
               %tr
@@ -56,11 +57,12 @@
                   -# = link_to dislike_papermache_paper_path(@paper), method: :put, remote: true do
                   -#   %i.fa.fa-chevron-down
   
-      .row
-        #paper_preview.col-md-8.col-md-offset-3
-          %p.sma
-            SMA: 
-            = @paper.sma
+      -# .row
+      -#   #paper_preview.col-md-8.col-md-offset-3
+      -#     %p.sma
+      -#       %a{:href => "/papermache/papers/#{@paper.id}/sma_detail"}
+      -#         SMA: 
+      -#         = @paper.sma
       .row
         .col-md-8.col-md-offset-2
           .interact
