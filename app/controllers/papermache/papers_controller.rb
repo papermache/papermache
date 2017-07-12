@@ -52,9 +52,14 @@ class Papermache::PapersController < ApplicationController
 
   def upvote
     if @paper.account.student != current_student
-      puts 'dkdkdkd'
       if(params[:volume])
-        @paper.vote_by voter: current_student, :vote_weight => params[:volume];
+        if (current_student.voted_up_on? @paper) || (current_student.voted_down_on? @paper) then
+          respond_to do |format|
+            format.json {render json: {message:"You have already voted this paper!"}}
+          end 
+        else
+          @paper.vote_by voter: current_student, :vote_weight => params[:volume];
+        end
       end
     end
   end
@@ -62,7 +67,13 @@ class Papermache::PapersController < ApplicationController
   def downvote
     if @paper.account.student != current_student
       if(params[:volume])
-        @paper.vote_by voter: current_student, :vote => 'bad',  :vote_weight => params[:volume];
+        if (current_student.voted_up_on? @paper) || (current_student.voted_down_on? @paper) then
+          respond_to do |format|
+            format.json {render json: {message:"You have already voted this paper!"}}
+          end 
+        else
+          @paper.vote_by voter: current_student, :vote => 'bad',  :vote_weight => params[:volume];
+        end
       end
     end
   end

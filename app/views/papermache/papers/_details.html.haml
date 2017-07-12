@@ -90,7 +90,12 @@
       url: $(this).attr('data-href'),
       type: 'PUT',
       data: "volume=" + n, 
-      success: function(data){} 
+      success: function(data){
+        if(data.message === undefined || data.message == null ){
+          return;
+        }
+        alert(data.message);
+      } 
     });
 
   });
@@ -110,12 +115,17 @@
       console.log('Inpted value is not integer');
       return;
     }
-    console.log("Paper Upvote Button Click : " + n);
+    console.log("Paper Downvote Button Click : " + n);
     $.ajax({
       url: $(this).attr('data-href'),
       type: 'PUT',
       data: "volume=" + n, 
-      success: function(data){} 
+      success: function(data){
+        if(data.message === undefined || data.message == null ){
+          return;
+        }
+        alert(data.message);
+      } 
     });
 
   });
