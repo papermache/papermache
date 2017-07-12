@@ -4,11 +4,11 @@
       .col-md-2.col-sm-3.col-xs-6
         .image
           = image_tag @account.avatar
-          %p.reputation
-            = link_to qrcode_detail_account_path(@account) do
-              =@account.quantified_reputation 
-            %br
-            REPUTATION
+          // %p.reputation
+          //   = link_to qrcode_detail_account_path(@account) do
+          //     =@account.quantified_reputation 
+          //   %br
+          //   REPUTATION
       .col-md-10.col-sm-9.col-xs-6
         .about-person
           %h3
