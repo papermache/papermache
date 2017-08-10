@@ -69,9 +69,9 @@
             %li{:role => "presentation"}
               %a{"aria-controls" => "papers_review", "data-toggle" => "tab", :href => "#papers_review", :role => "tab"}
                 Reputation
-            -# %li{:role => "presentation"}
-            -#   %a{"aria-controls" => "edit_general_info", "data-toggle" => "tab", :href => "#edit_general_info", :role => "tab"}
-            -#     Edit General Info
+            %li{:role => "presentation"}
+              %a{"aria-controls" => "edit_general_info", "data-toggle" => "tab", :href => "#edit_general_info", :role => "tab"}
+                Edit General Info
             -# %li{:role => "presentation"}
             -#   %a{"aria-controls" => "edit_education_info", "data-toggle" => "tab", :href => "#edit_education_info", :role => "tab"}
             -#     Edit Education Info
@@ -90,9 +90,9 @@
           #papers_review.tab-pane{:role => "tabpanel"}
             = render 'reputation'
 
-          -# - if current_student && current_student == @account.student
-          -#   #edit_general_info.tab-pane{:role => "tabpanel"}
-          -#     = render 'edit_general_info_form'
+          - if current_student && current_student == @account.student
+            #edit_general_info.tab-pane{:role => "tabpanel"}
+              = render 'edit_general_info_form'
           -#   #edit_education_info.tab-pane{:role => "tabpanel"}
           -#     = render 'edit_education_form'
           -#   #manage_papers.tab-pane{:role => "tabpanel"}
