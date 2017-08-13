@@ -19,5 +19,5 @@
 /.idea
 /.vscode
 /.Gemfile.lock
-/db/schemda.rb
+/db/schema.rb
 /.nohup.out
