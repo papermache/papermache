@@ -20,3 +20,4 @@
 /.vscode
 /.Gemfile.lock
 /db/schemda.rb
+/.nohup.out
