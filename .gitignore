@@ -19,3 +19,4 @@
 /.idea
 /.vscode
 /.Gemfile.lock
+/db/schemda.rb
