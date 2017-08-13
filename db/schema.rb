@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626072547) do
+ActiveRecord::Schema.define(version: 20170712060639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -156,6 +156,10 @@ ActiveRecord::Schema.define(version: 20170626072547) do
 
   add_index "research_interests", ["account_id"], name: "index_research_interests_on_account_id", using: :btree
 
+  create_table "student_id", id: false, force: :cascade do |t|
+    t.integer "student_id"
+  end
+
   create_table "students", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -205,6 +209,10 @@ ActiveRecord::Schema.define(version: 20170626072547) do
 
   create_table "upvote", id: false, force: :cascade do |t|
     t.integer "count", limit: 8
+  end
+
+  create_table "v_student_id", id: false, force: :cascade do |t|
+    t.integer "student_id"
   end
 
   create_table "votes", force: :cascade do |t|
