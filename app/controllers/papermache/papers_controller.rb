@@ -37,9 +37,11 @@ class Papermache::PapersController < ApplicationController
     # Libreconv.convert(@paper.file.identifier, '/Users/daria/pdf_documents')
 
     if @paper.save
-      redirect_to :back, notice: 'Paper successfully created.'
+      puts 'Paper successfully created.'
+      # redirect_to :back, notice: 'Paper successfully created.'
     else 
-      redirect_to :back, notice: 'Something went wrong.'
+      puts 'Something went wrong.'
+      # redirect_to :back, notice: 'Something went wrong.'
     end 
   end
 
