@@ -69,9 +69,10 @@
             -# %li{:role => "presentation"}
             -#   %a{"aria-controls" => "papers_review", "data-toggle" => "tab", :href => "#papers_review", :role => "tab"}
             -#     Reputation
-            %li{:role => "presentation"}
-              %a{"aria-controls" => "edit_general_info", "data-toggle" => "tab", :href => "#edit_general_info", :role => "tab"}
-                Personoal Info
+            - if current_student.account.id.to_s == params[:id].to_s
+              %li{:role => "presentation"}
+                %a{"aria-controls" => "edit_general_info", "data-toggle" => "tab", :href => "#edit_general_info", :role => "tab"}
+                  Personal Info
             -# %li{:role => "presentation"}
             -#   %a{"aria-controls" => "edit_education_info", "data-toggle" => "tab", :href => "#edit_education_info", :role => "tab"}
             -#     Edit Education Info
