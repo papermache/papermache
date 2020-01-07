@@ -17,9 +17,12 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: postgres
+  password: esfera
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
+  reconnect: true
 
 development:
   <<: *default
@@ -81,5 +84,4 @@ test:
 production:
   <<: *default
   database: papermache_back_production
-  username: papermache_back
-  password: <%= ENV['PAPERMACHE_BACK_DATABASE_PASSWORD'] %>
+  

@@ -23,7 +23,7 @@
   }
   var app = new annotator.App()
       .include(annotator.ui.main)
-      .include(annotator.storage.http, {prefix: 'http://192.168.0.105:3000/annotator_store'})
+      .include(annotator.storage.http, {prefix: 'http://papermache.fyi/annotator_store'})
       .include(pageUri)
       .include(test123);
 
@@ -54,7 +54,7 @@
         console.log("**********************destory all annotations**************************");
         app = new annotator.App()
           .include(annotator.ui.main)
-          .include(annotator.storage.http, {prefix: 'http://192.168.0.105:3000/annotator_store'})
+          .include(annotator.storage.http, {prefix: 'http://papermache.fyi/annotator_store'})
           .include(pageUri)
           .include(test123);
         app.start().then(function(){
