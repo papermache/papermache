@@ -18,7 +18,7 @@
       .nav.navbar-nav {
         li {
           a {
-            color: black;
+            color: #f7e100;
             padding: 10px 20px;
             margin-right: 5px;
             font-style: italic;
@@ -30,10 +30,11 @@
       .nav-center {
         li {
           a {
-            background: #f7e100;
+            background: #535353;
+            color: #f7e100;
             &:hover {
-              background: black;
-              color: #f7e100;
+              background: #f7e100;
+              color: #535353;
             }
           }
         }
