@@ -33,16 +33,6 @@ class Papermache::PapersController < ApplicationController
     @friends = Account.all.where("id != ?", @account)  
    path = Rails.root.join('public', 'uploads','papermache','paper','file',@paper.id.to_s,@paper['file'])
    Docsplit.extract_images(path,:format => [:jpeg],:output => 'images')
-#    pdf = MiniMagick::Image.open(Rails.root.join('public', 'uploads','papermache','paper','file',@paper.id.to_s,@paper['file']
-# ))
-#     MiniMagick::Tool::Convert.new do |convert|
-#     convert.background "white"
-#     convert.flatten
-#     convert.density 150
-#     convert.quality 100
-#     convert << pdf.pages.first.path
-#     convert << "images/#{Time.now.to_i}.png"
-#   end
 
   end
 
