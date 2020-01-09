@@ -30,15 +30,15 @@ class Papermache::PapersController < ApplicationController
     @account = @paper.account
     # @friends = @account.all_following + @account.followers
     @friends = Account.all.where("id != ?", @account)
-    # pdf = MiniMagick::Image.open(Rails.root.join('public', 'uploads', 'AccountingPaper.pdf'))
-  # MiniMagick::Tool::Convert.new do |convert|
-  #   convert.background "white"
-  #   convert.flatten
-  #   convert.density 150
-  #   convert.quality 100
-  #   convert << pdf.pages.first.path
-  #   convert << "png8:preview.png"
-  # end
+    pdf = MiniMagick::Image.open(Rails.root.join('public', 'uploads', 'AccountingPaper.pdf'))
+    MiniMagick::Tool::Convert.new do |convert|
+    convert.background "white"
+    convert.flatten
+    convert.density 150
+    convert.quality 100
+    convert << pdf.pages.first.path
+    convert << "images/#{Time.now.to_i}.png"
+  end
 
   end
 
