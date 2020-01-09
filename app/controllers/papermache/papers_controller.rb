@@ -47,6 +47,7 @@ class Papermache::PapersController < ApplicationController
       puts 'Something went wrong.'
       # redirect_to :back, notice: 'Something went wrong.'
     end 
+    head :ok
   end
 
   # pdf view
