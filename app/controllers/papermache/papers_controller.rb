@@ -30,7 +30,7 @@ class Papermache::PapersController < ApplicationController
     @account = @paper.account
     # @friends = @account.all_following + @account.followers
     @friends = Account.all.where("id != ?", @account)
-    pdf = MiniMagick::Image.open(Rails.root.join('public', 'uploads', 'AccountingPaper.pdf'))
+    # pdf = MiniMagick::Image.open(Rails.root.join('public', 'uploads', 'AccountingPaper.pdf'))
   # MiniMagick::Tool::Convert.new do |convert|
   #   convert.background "white"
   #   convert.flatten
