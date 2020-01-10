@@ -15,7 +15,7 @@
             = @account.first_name 
             %br/
             = @account.last_name
-          %button
+          %button#peer
             Peer
           %button{:onclick => "location.href=\"mailto:#{@account.edu_email}\""}
             Message
@@ -108,4 +108,7 @@
   $('#myTabs a').click(function (e) {
     e.preventDefault()
     $(this).tab('show')
+  })
+  $('#peer').click(function(e){
+    $('#peer').text('Request Sent')
   })

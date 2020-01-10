@@ -122,3 +122,18 @@ body::-webkit-scrollbar-thumb{
 *{
   font-family: 'Eurofurence';
 }
+.search_buttons{
+text-align: center;
+display: inline-block;
+text-decoration: none;
+width: 210px;
+border: none;
+border-radius: 0;
+background:
+#f7e100;
+padding: 15px 20px;
+font-size: 20px;
+color:
+#1f180d;
+font-weight: bold;
+}
