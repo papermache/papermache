@@ -62,7 +62,7 @@ class Account < ActiveRecord::Base
 
   def quantified_reputation
     result = ActiveRecord::Base.connection.exec_query("SELECT GET_REPUTATION(#{self.id});")
-    return result.rows[0][0]
+    return result.rows[0][0].to_d.truncate(2).to_s
   end
 
   def allpaper_received_votes
@@ -85,7 +85,7 @@ class Account < ActiveRecord::Base
 
   def gain_losses_paper(paper_id)
     result = ActiveRecord::Base.connection.exec_query("SELECT GET_GAIN_LOSSES_PAPER(#{paper_id}, #{self.id});")
-    return result.rows[0][0] 
+    return result.rows[0][0].to_d.truncate(2).to_s 
   end
 
   def vote_cast_for(paper_id)
@@ -95,6 +95,6 @@ class Account < ActiveRecord::Base
 
   def gain_losses_all
     result = ActiveRecord::Base.connection.exec_query("SELECT GET_GAIN_LOSSES(#{self.id});")
-    return result.rows[0][0]     
+    return result.rows[0][0].to_d.truncate(2).to_s     
   end
 end

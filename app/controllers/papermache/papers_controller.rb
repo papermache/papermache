@@ -27,9 +27,13 @@ class Papermache::PapersController < ApplicationController
   end
 
   def show
+
     @account = @paper.account
     # @friends = @account.all_following + @account.followers
-    @friends = Account.all.where("id != ?", @account)
+    @friends = Account.all.where("id != ?", @account)  
+   path = Rails.root.join('public', 'uploads','papermache','paper','file',@paper.id.to_s,@paper['file'])
+   Docsplit.extract_images(path,:format => [:jpeg],:output => 'images')
+
   end
 
   def create
@@ -37,10 +41,13 @@ class Papermache::PapersController < ApplicationController
     # Libreconv.convert(@paper.file.identifier, '/Users/daria/pdf_documents')
 
     if @paper.save
-      redirect_to :back, notice: 'Paper successfully created.'
+      puts 'Paper successfully created.'
+      # redirect_to :back, notice: 'Paper successfully created.'
     else 
-      redirect_to :back, notice: 'Something went wrong.'
+      puts 'Something went wrong.'
+      # redirect_to :back, notice: 'Something went wrong.'
     end 
+    head :ok
   end
 
   # pdf view

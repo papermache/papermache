@@ -26,7 +26,7 @@ class Papermache::Paper < ActiveRecord::Base
 
   def sma
     result = ActiveRecord::Base.connection.exec_query("SELECT GET_SMA(#{self.id});")
-    return result.rows[0][0]
+    return result.rows[0][0].to_d.truncate(2).to_s
   end
 
   def sma_detail

@@ -13253,6 +13253,9 @@ var Adder = Widget.extend({
 
         //Create a new annotation
         if (this.annotation !== null && typeof this.onCreate === 'function') {
+						console.log("**********************test******************************");
+						console.log(this);
+						console.log(this.annotation);
             this.onCreate(this.annotation, event);
         }
     }
@@ -14818,6 +14821,9 @@ function main(options) {
             onSelection: function (ranges, event) {
                 if (ranges.length > 0) {
                     var annotation = makeAnnotation(ranges);
+										console.log("-----------textselector-------------------");
+										console.log(annotation.quote);
+										$("#temp_sel").val(annotation.quote);
                     s.interactionPoint = util.mousePosition(event);
                     s.adder.load(annotation, s.interactionPoint);
                 } else {

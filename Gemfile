@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.5'
+# gem 'rails', '4.2.5'
 gem 'pg', '~> 0.15'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -21,7 +21,7 @@ end
 
 group :development do
   gem 'web-console', '~> 2.0'
-  gem 'spring'
+  # gem 'spring'
 end
 
 gem 'bcrypt'
@@ -43,4 +43,4 @@ gem 'pg_search'
 gem 'will_paginate'
 gem 'owlcarousel-rails'
 gem 'paper-pdf-parser', '~> 0.1.0'
-
+gem 'docsplit'

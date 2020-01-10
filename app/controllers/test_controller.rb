@@ -40,8 +40,8 @@ class TestController < ApplicationController
     @nay_papers = @account.student.votes.down.for_type(Papermache::Paper).size
     @yea_cast_avg = 0
     @nay_cast_avg = 0
-    @yea_cast_avg = @upvote_cast / @yea_papers if @yea_papers > 0
-    @nay_cast_avg = @downvote_cast / @nay_papers if @nay_papers > 0
+    @yea_cast_avg = (@upvote_cast / @yea_papers).to_d.truncate(2).to_s if @yea_papers > 0
+    @nay_cast_avg = (@downvote_cast / @nay_papers).to_d.truncate(2).to_s if @nay_papers > 0
     @gain_losses  = @account.gain_losses_all
 
     # QR
