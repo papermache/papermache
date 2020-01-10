@@ -1,12 +1,11 @@
 .jumbotron.search_jumb
   .container
     .col-md-6
-      %form{:role => "search"}
-        %input.form-control{:placeholder => "", :type => "text"}
+      %form{:role => "papermache/search?"}
+        %input.form-control{:placeholder => "",name: 'search', :type => "text"}
         .buttons
-          = link_to 'Search Peers', class: 'btn btn-default'
-          = link_to 'Search Papers', class: 'btn btn-default'
-
+          = button_tag 'Search Peers',name:'peer',value: 'true',type: 'submit', class: 'search_buttons '
+          = button_tag 'Search Papers',name:'paper',value: 'true',type: 'submit', class: 'search_buttons'
 
     .row
       .container-fluid
@@ -22,206 +21,29 @@
           = link_to do
             Most Cited
         .col-md-10
-          .row
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum Lorem ipsumLorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
-          .row
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum Lorem ipsumLorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
-          .row
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum Lorem ipsumLorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
-          .row
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum Lorem ipsumLorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
-          .row
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum Lorem ipsumLorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
-          .row
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum Lorem ipsumLorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
-          .row
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum Lorem ipsumLorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
-            = link_to do
-              .col-md-3.col-sm-3
-                = image_tag 'doc-icon.png'
-                %h6
-                  Title: Lorem ipsum
-                %h6
-                  Author: Dexter Morgan
+          - if @account_data.present?
+            .row
+              - @account_data.each do |account|
+                = link_to(account_path(id: account.id)) do
+                  .col-md-3.col-sm-3
+                    .avatar
+                      = image_tag account.avatar
+                    = account.full_name
+                    %p
+                      - account.majors.each do |major|
+                        = major.name
+          - elsif @paper_data.present?
+            .row
+              - @paper_data.each do |account|
+                = link_to(papermache_paper_path(id: account.id)) do
+                  .col-md-3.col-sm-3
+                    = image_tag 'doc-icon.png'
+                    %h6
+                      Title: 
+                      = account.title
+                    %h6
+                      Author: 
+                      = account.account.full_name  
+          - else
+            No Records Found        
+
