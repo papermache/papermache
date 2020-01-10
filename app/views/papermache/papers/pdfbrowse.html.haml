@@ -1,5 +1,8 @@
 = pdfjs_viewer pdf_url: @paper.file.url, style: :full
-%input#temp_sel{:type => "hidden"}
+:css
+  .textLayer ::selection { background: #f7e100!important; }
+  .textLayer ::-moz-selection { background: #f7e100!important; }
+%input#temp_sel
 :javascript
   //var TEXT_LAYER_RENDER_DELAY = 200; // ms  from PDF.js viewer.js
   var ANNOTATION_RENDER_DELAY = 500; // ms  from PDF.js viewer.js
