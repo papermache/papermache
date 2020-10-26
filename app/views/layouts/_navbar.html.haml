@@ -8,15 +8,15 @@
         %span.icon-bar
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       .col-md-3.col-sm-3
-        = link_to do
+        = link_to root_url do
           = image_tag 'logo.jpg'
       .col-md-1.col-sm-1
       .col-md-8.col-sm-8
-        %ul.nav.navbar-nav.nav-center
+        %ul.nav.navbar-nav
           - if current_student and current_student.account and current_student.account.completed?
             -# %li= link_to 'Find Students', accounts_path
             %li= link_to 'Find Papers', papermache_papers_path
-            %li= link_to 'Upload Papers', uploadpaper_account_path(current_student.account)     
+            %li= link_to 'Upload Papers', uploadpaper_account_path(current_student.account)
         %ul.nav.navbar-nav.navbar-right
 
           - if current_student and current_student.account and !current_student.account.completed?
@@ -27,7 +27,7 @@
             %li= link_to 'Log out', destroy_student_session_path, method: :delete
 
           - elsif current_student and current_student.account and current_student.account.completed?
-          
+
             %li.welcome-profile
               = link_to "Welcome #{current_student.account.full_name}", account_path(current_student.account), class: "profile-a"
             -# %li.firstbtn= link_to 'Profile', account_path(current_student.account)
@@ -37,4 +37,3 @@
 
             %li= link_to 'Log in', new_student_session_path
             %li= link_to 'Sign up', new_student_registration_path
-
