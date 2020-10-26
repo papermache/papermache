@@ -21,3 +21,6 @@
 /Gemfile.lock
 /db/schema.rb
 /nohup.out
+/images
+/public/assets/*
+/*.tar.gz
