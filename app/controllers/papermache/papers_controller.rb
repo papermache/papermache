@@ -41,12 +41,11 @@ class Papermache::PapersController < ApplicationController
 
     if @paper.save
       puts 'Paper successfully created.'
-      # redirect_to :back, notice: 'Paper successfully created.'
+      redirect_to :back, notice: 'Paper successfully created.'
     else
       puts 'Something went wrong.'
-      # redirect_to :back, notice: 'Something went wrong.'
+      redirect_to :back, notice: 'Something went wrong.'
     end
-    head :ok
   end
 
   # pdf view
